@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block title %}BLOGSPOT | HOME{% endblock %}
+
+
+{% block content %}
+
+<main>
+    <ul>
+        <div class="all-blogs-list">
+          <h1>Post</h1>
+          <br>
+          {% for post in object_list %}
+          <li>
+            <a href="{% url 'articles-page' post.pk %}">{{post.title}}</a> <span class="author">-- {{post.author.first_name}} {{post.author.last_name}}</span>
+            <br>
+            <span class="post-time">{{post.post_time}}</span>
+            <br>
+            <br>
+            <hr>
+          </li>
+          {% endfor %}
+        </div>
+      </ul>
+</main>
+
+{% endblock %}
