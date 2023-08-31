@@ -33,6 +33,7 @@
     - custom css link
   -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
     <!-- 
     - preload images
@@ -71,7 +72,7 @@
                 <ul class="navbar-list">
 
                     <li>
-                        <a href="#home" class="navbar-link hover-1" data-nav-toggler>Home</a>
+                        <a href="{% url 'blogs_app:home' %}" class="navbar-link hover-1" data-nav-toggler>Home</a>
                     </li>
 
                     <li>
@@ -89,6 +90,7 @@
                     <li>
                         <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
                     </li>
+                    
 
                 </ul>
 
@@ -144,7 +146,7 @@
             </nav>
 
             <a href="#" class="btn btn-primary">Subscribe</a>
-            <a href="#" class="">Login / Register</a>
+            <a href="{% url 'users:signup' %}" class="">Login / Register</a>
 
             <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
                 <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -153,12 +155,8 @@
         </div>
     </header>
 
-    <section class="hero" id="home" aria-label="home">
-        <div class="container">
+    
 
-
-        </div>
-      </section>
     <!-- main -->
 
     {% block content %}{% endblock %}
@@ -350,7 +348,7 @@
     <!-- 
     - custom js link
   -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
     <!-- 
     - ionicon link

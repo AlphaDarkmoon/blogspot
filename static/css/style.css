@@ -24,7 +24,7 @@
   --bg-wild-blue-yonder:#EB1254;
   --bg-carolina-blue: #EB1254;
   --bg-prussian-blue: hsla(216, 33%, 20%, 1);
-  --bg-oxford-blue: rgba(16, 17, 19, 0.425);
+  --bg-oxford-blue: rgba(19, 16, 16, 0.425);
   --bg-oxford-blue-2: hsla(222, 47%, 11%, 1);
 
   /** Text colors */
@@ -1498,7 +1498,7 @@ body.nav-active { overflow: hidden; }
 }
 
 .post-time {
-  color: #999;
+  color: #999; --bg-oxford-blue-2: rgb(28, 41, 15);
 }
 
 .all-blogs-list > hr {
@@ -1506,3 +1506,5 @@ body.nav-active { overflow: hidden; }
   border-top: 1px solid #ccc;
   margin: 10px 0;
 }
+
+

@@ -111,3 +111,7 @@ window.addEventListener("resize", function () {
 
   moveSliderItem();
 });
+
+function replaceURL(newURL) {
+  window.location.href = newURL;
+}

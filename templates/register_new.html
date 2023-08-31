@@ -1,0 +1,108 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 
+    - primary meta tags
+  -->
+    <title>BLOGSPOT | {% block title %}{% endblock %}</title>
+    <meta name="title" content="Wren - Perosonal Blog Website">
+    <meta name="description" content="This is a blog html template made by codewithsadee">
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="assets/images/icons/favicon.ico" type="image/svg+xml">
+
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="{% static 'images/hero-banner.png' %}">
+    <link rel="preload" as="image" href="{% static 'images/pattern-2.svg' %}">
+    <link rel="preload" as="image" href="{% static 'images/pattern-3.svg' %}">
+
+</head>
+
+<body id="top">
+
+
+
+
+  <main>
+    <article>
+      <div class="blank" id="first"><a href="{% url 'blogs_app:home' %}" class="navbar-link hover-1">← Back to Home</a></div>
+      <center>
+      <img src="{% static 'images/login-banner.png' %}" class='login-banner'>
+    </center>
+      <center>
+        <h2>Sign Up</h2>
+      </center>
+      <div class="container-form">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+    
+          <center><button type="submit">Sign Up</button>
+          </center>
+          <p>Old User?<a id="signin" href="{% url 'users:signup' %}" onclick="replaceURL('/users/login/'); return false;"> Sign In</a></p>
+        </form>
+      </div>
+      <div class="blank" id="first"></div>
+    </article>
+  </main>
+
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+</a>
+
+
+
+
+
+<!-- 
+- custom js link
+-->
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+<!-- 
+- ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+  function replaceURL(newURL) {
+    window.location.href = newURL;
+  }
+</script>
+</body>
+
+</html>
+
+
+
