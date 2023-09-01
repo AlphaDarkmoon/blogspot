@@ -442,7 +442,7 @@ body.nav-active { overflow: hidden; }
 
 .hero-bg { display: none; }
 
-.hero { padding-block-start: calc(var(--section-padding) + 160px); }
+.hero { padding-block-start: calc(var(--section-padding) + 40px); }
 
 .hero .container {
   display: grid;
@@ -979,7 +979,10 @@ body.nav-active { overflow: hidden; }
 
 
 
-
+.copyright-text{
+  position: fixed;
+  bottom: 0;
+}
 
 /*-----------------------------------*\
   #MEDIA QUERIES
@@ -1120,6 +1123,8 @@ body.nav-active { overflow: hidden; }
 
   .aside-title { --fontSize-2: 2rem; }
 
+
+
 }
 
 
@@ -1181,7 +1186,6 @@ body.nav-active { overflow: hidden; }
    */
 
   .container { max-width: 930px; }
-
 
 
   /**

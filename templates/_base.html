@@ -90,10 +90,20 @@
                     <li>
                         <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                <a class="navbar-link hover-1" href="{% url 'users:logout' %}" >Logout</a>
+                    </li>
+
+            {% else %}
+            <li>
+                <a href="{% url 'users:signup' %}" class="navbar-link hover-1">Login / Register</a>
+            </li>
+            {% endif %}
                     
 
                 </ul>
-
+                {% if user.is_authenticated %}
                 <div class="navbar-bottom">
 
                     <div class="profile-card">
@@ -101,7 +111,7 @@
                             class="profile-banner">
 
                         <div>
-                            <p class="card-title">Hello Steven !</p>
+                            <p class="card-title">Hello {{ user.first_name }} !</p>
 
                             <p class="card-subtitle">
                                 You have 3 new messages
@@ -138,6 +148,7 @@
                     </ul>
 
                 </div>
+                {% endif %}
 
                 <p class="copyright-text">
                     Copyright 2023 © BLOGSPOT - Prograammers Blogs.
@@ -146,7 +157,7 @@
             </nav>
 
             <a href="#" class="btn btn-primary">Subscribe</a>
-            <a href="{% url 'users:signup' %}" class="">Login / Register</a>
+            
 
             <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
                 <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
@@ -290,10 +301,7 @@
 
                 <div class="footer-bottom">
 
-                    <p class="copyright">
-                        &copy; Developed by <a href="#" class="copyright-link">codewithsadee.</a>
-                    </p>
-
+                   
                     <ul class="social-list">
 
                         <li>

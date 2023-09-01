@@ -8,4 +8,6 @@ app_name = 'users'
 urlpatterns = [
     # URL pattern for the 'signup' view
     path("signup/", views.SignUp.as_view(), name="signup"),
+    # Logout view
+    path('logout/', views.logout_view, name='logout'),
 ]
