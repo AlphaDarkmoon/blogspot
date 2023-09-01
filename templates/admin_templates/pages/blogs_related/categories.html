@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+{% extends '_base.html' %}
+{% block title %}{{categories}}{% endblock %}
+{% block content %}
+
+{% if category_posts %}
+<ul>
+    <h1>{{categories}}</h1>
+    {% for post in category_posts %}
+    <a href="{% url 'blogs_app:articles-page' post.pk %}">{{post.title}}</a> --{{post.author.first_name}}
+    {{post.author}}
+    <br>
+    {{ post.body | slice:":200"| safe}}...
+    | {{post.category}}
+    | {{post.post_time}}
+    <br>
+    
+    {% endfor %}
+</ul>
+{% else %}
+    <h2>Page does not exist (0_0!)</h2>
+    {% endif %}
+{% endblock %}

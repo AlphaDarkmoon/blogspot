@@ -1,0 +1,48 @@
+/* Admin Dashboard Page CSS */
+
+#id_body{
+    height: 200px;
+  }
+
+
+  #id_title,
+  #id_title_tag,
+  #id_author,
+  #id_banner_img,
+  #id_body,
+  #id_name {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: #f8f8f8;
+      color: #333;
+      transition: border-color 0.3s ease-in-out;
+  }
+
+  /* Add a hover effect */
+  #id_title:hover,
+  #id_title_tag:hover,
+  #id_author:hover,
+  #id_banner_img:hover,
+  #id_category:hover,
+  #id_body:hover,
+  #id_name:hover {
+      border-color: #666;
+  }
+
+  /* Add focus styles */
+  #id_title:focus,
+  #id_title_tag:focus,
+  #id_author:focus,
+  #id_banner_img:focus,
+  #id_category:focus,
+  #id_body:focus,
+  #id_name:focus {
+      border-color: #007BFF;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }

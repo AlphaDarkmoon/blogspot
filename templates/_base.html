@@ -92,8 +92,11 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li>
-                <a class="navbar-link hover-1" href="{% url 'users:logout' %}" >Logout</a>
+                        <a class="navbar-link hover-1" href="{% url 'users:logout' %}" >Logout</a>
                     </li>
+                    <li>
+                        <a class="navbar-link hover-1" href="{% url 'blogs_app:admin-view' %}" >Dashboard</a>
+                        </li>
 
             {% else %}
             <li>

@@ -183,9 +183,6 @@ button[type="submit"]:hover {
 
 /* Adjust margin for smaller screens */
 @media (max-width: 768px) {
-
-
-
   #first {
     display: block;
   }
