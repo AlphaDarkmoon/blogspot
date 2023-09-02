@@ -26,7 +26,8 @@ class Post(models.Model):
     
     def get_absolute_url(self):
         # return reverse('articles-page', args = (str(self.id)))  # to redirect to the aritcle page of same post
-        return reverse('blogs_app:home')                                    
+        return reverse('blogs_app:home') 
+                                           
     
 
 

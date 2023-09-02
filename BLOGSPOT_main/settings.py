@@ -137,3 +137,5 @@ AUTH_USER_MODEL = "users.CustomUser"
 
 LOGIN_REDIRECT_URL = "blogs_app:home"       #made changes
 LOGOUT_REDIRECT_URL = "blogs_app:home"      #made changes
+
+

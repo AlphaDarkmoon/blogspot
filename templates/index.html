@@ -294,102 +294,18 @@
           </p>
 
           <ul class="grid-list">
-
+            {% for category in cat_values %}
             <li>
-              <button class="card tag-btn">
+              <a href="{% url 'blogs_app:category' category  %}">
+              <button class="card tag-btn" >
                 <img src="{% static 'images/tag1.png' %}" width="32" height="32" loading="lazy" alt="Travel">
 
-                <p class="btn-text">Travel</p>
+                <p class="btn-text">{{ category }}</p>
               </button>
+            </a>
             </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag2.png' %}" width="32" height="32" loading="lazy" alt="Culture">
-
-                <p class="btn-text">Culture</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag3.png' %}" width="32" height="32" loading="lazy" alt="Lifestyle">
-
-                <p class="btn-text">Lifestyle</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag4.png' %}" width="32" height="32" loading="lazy" alt="Fashion">
-
-                <p class="btn-text">Fashion</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag5.png' %}" width="32" height="32" loading="lazy" alt="Food">
-
-                <p class="btn-text">Food</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag6.png' %}" width="32" height="32" loading="lazy" alt="Space">
-
-                <p class="btn-text">Space</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag7.png' %}" width="32" height="32" loading="lazy" alt="Animal">
-
-                <p class="btn-text">Animal</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag8.png' %}" width="32" height="32" loading="lazy" alt="Minimal">
-
-                <p class="btn-text">Minimal</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag9.png' %}" width="32" height="32" loading="lazy" alt="Interior">
-
-                <p class="btn-text">Interior</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag10.png' %}" width="32" height="32" loading="lazy" alt="Plant">
-
-                <p class="btn-text">Plant</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag11.png' %}" width="32" height="32" loading="lazy" alt="Nature">
-
-                <p class="btn-text">Nature</p>
-              </button>
-            </li>
-
-            <li>
-              <button class="card tag-btn">
-                <img src="{% static 'images/tag12.png' %}" width="32" height="32" loading="lazy" alt="Business">
-
-                <p class="btn-text">Business</p>
-              </button>
-            </li>
+            {% endfor %}
+            
 
           </ul>
 

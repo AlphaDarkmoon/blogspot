@@ -15,6 +15,12 @@ class HomeView(ListView):
     template_name = 'index.html'
     ordering = ['-id','post_time']
 
+    def get_context_data(self,*args, **kwargs):
+        cat_values = Category.objects.all()
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context['cat_values'] = cat_values
+        return context
+
 
 #########################################################################
 #              HomeView to show all of the post titles on index.html    #

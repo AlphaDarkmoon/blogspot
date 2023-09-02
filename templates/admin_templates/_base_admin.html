@@ -26,6 +26,8 @@
   <link rel="shortcut icon" href="{% static 'admin_assets/images/favicon.png' %}" />
 </head>
 <body>
+  {% if user.is_authenticated and user.is_superuser %}
+    
   <div class="container-scroller">
 
     <!-- partial:partials/_navbar.html -->
@@ -421,6 +423,8 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+  {% endif %}
+    <h1>You are not admin...(--_--)!</h1>
   <!-- container-scroller -->
 
   <!-- plugins:js -->
