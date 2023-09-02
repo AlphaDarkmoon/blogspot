@@ -67,8 +67,7 @@
                   <a href="#" class="slider-card">
 
                     <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
-                      <img src="{% static 'images/topic-1.png' %}" width="507" height="618" loading="lazy" alt="Sport"
-                        class="img-cover">
+                      <img src="{% static 'images/topic-1.png' %}" width="507" height="618" loading="lazy" alt="Sport" class="img-cover">
                     </figure>
 
                     <div class="slider-content">
@@ -170,9 +169,29 @@
             <img src="assets/images/djngo-ban.avif" alt=""  class="image-blog">
           </div>
           <br>
+          <div class="like-title-container">
           <h2 class="headline headline-2 section-title">
             <span class="span">{{ post.title }}</span> 
           </h2>
+          <div class="like-block">
+            <form class='like-unlike' action="{% url 'blogs_app:like-post' post.pk %}" method="POST">
+    
+              {% csrf_token %}
+              {% if user.is_authenticated %}
+                {% if liked %}
+                <button class='like-btn' type="submit" name='post_id', value="{{ post.id}}", class="btn btn-denger" >Unlike</button>
+                {% else %}
+                <button class='like-btn' type="submit" name='post_id', value="{{ post.id}}", class="btn btn-primary" >Like</button>
+                {% endif %}
+              {% endif %}
+              
+              <span class="total-likes">{{ total_likes}} Likes</span> 
+          
+            </form>
+          </div>
+        </div>
+        <br>
+        <br>
           <small>by: {{ post.author.first_name}}</small>
           <p class="section-text">
             Python | Django | Web

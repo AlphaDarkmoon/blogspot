@@ -317,10 +317,6 @@ body.nav-active { overflow: hidden; }
   align-items: center;
 }
 
-
-
-
-
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
@@ -442,7 +438,7 @@ body.nav-active { overflow: hidden; }
 
 .hero-bg { display: none; }
 
-.hero { padding-block-start: calc(var(--section-padding) + 160px); }
+.hero { padding-block-start: calc(var(--section-padding) + 40px); }
 
 .hero .container {
   display: grid;
@@ -1507,4 +1503,17 @@ body.nav-active { overflow: hidden; }
   margin: 10px 0;
 }
 
+
+.like-unlike{
+  border: none;
+  background-color: #000d1a00;
+}
+
+.like-btn{
+  float: left;
+}
+
+.total-likes{
+  float: right;
+}
 

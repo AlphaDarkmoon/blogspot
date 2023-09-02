@@ -115,3 +115,5 @@ window.addEventListener("resize", function () {
 function replaceURL(newURL) {
   window.location.href = newURL;
 }
+
+

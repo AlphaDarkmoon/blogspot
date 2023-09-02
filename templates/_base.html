@@ -76,16 +76,14 @@
                     </li>
 
                     <li>
-                        <a href="#topics" class="navbar-link hover-1" data-nav-toggler>Topics</a>
+                        <a href="#topics" class="navbar-link hover-1" data-nav-toggler>Courses</a>
                     </li>
 
                     <li>
                         <a href="#featured" class="navbar-link hover-1" data-nav-toggler>Featured Post</a>
                     </li>
 
-                    <li>
-                        <a href="#recent" class="navbar-link hover-1" data-nav-toggler>Recent Post</a>
-                    </li>
+
 
                     <li>
                         <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
@@ -148,7 +146,7 @@
                         </li>
 
                         <li>
-                            <a href="#" class="navbar-bottom-link hover-1">Sign Out</a>
+                            <a href="{% url 'users:logout' %}" class="navbar-bottom-link hover-1">Sign Out</a>
                         </li>
 
                     </ul>
@@ -369,6 +367,10 @@
   -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 </body>
 

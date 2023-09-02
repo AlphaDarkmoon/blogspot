@@ -1,9 +1,11 @@
 <!-- templates/home.html -->
 {% extends '_base.html' %}
+{% load static %}
+
 {% block title %}{{categories}}{% endblock %}
 {% block content %}
 
-{% if category_posts %}
+{% comment %} {% if category_posts %}
 <ul>
     <h1>{{categories}}</h1>
     {% for post in category_posts %}
@@ -19,5 +21,311 @@
 </ul>
 {% else %}
     <h2>Page does not exist (0_0!)</h2>
-    {% endif %}
+    {% endif %} {% endcomment %}
+    <div class="blank"></div>
+    <section class="section recent-post" id="recent" aria-labelledby="recent-label">
+        <div class="container">
+
+          <div class="post-main">
+
+            <h2 class="headline headline-2 section-title">
+              <span class="span"><h1>{{categories}}</h1></span>
+            </h2>
+
+            <p class="section-text">
+              Don't miss the latest Blogs
+            </p>
+            {% if category_posts %}
+            <ul class="grid-list">
+                {% for post in category_posts %}
+              <li>
+                <div class="recent-post-card">
+
+                  <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
+                    <img src="{% static 'images/recent-post-1.jpg' %}" width="271" height="258" loading="lazy"
+                      alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
+                  </figure>
+
+                  <div class="card-content">
+
+                    <a href="#" class="card-badge">{{post.author.first_name}}</a>
+
+                    <h3 class="headline headline-3 card-title">
+                      <a href="{% url 'blogs_app:articles-page' post.pk %}" class="link hover-2">{{post.title}}</a>
+                    </h3>
+
+                    <p class="card-text">
+                        {{ post.body | slice:":200"| safe}}
+                    </p>
+
+                    <div class="card-wrapper">
+                      <div class="card-tag">
+                        <a href="#" class="span hover-2">Web</a>
+                        |
+                        <a href="#" class="span hover-2">html, css</a>
+                      </div>
+
+                      <div class="wrapper">
+                        <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                        <span class="span">{{post.post_time}}</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </li>
+              {% endfor %}
+
+            </ul>
+            {% else %}
+                <h2>Page does not exist (0_0!)</h2>
+            {% endif %}
+            <nav aria-label="pagination" class="pagination">
+
+              <a href="#" class="pagination-btn" aria-label="previous page">
+                <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+              </a>
+
+              <a href="#" class="pagination-btn">1</a>
+              <a href="#" class="pagination-btn">2</a>
+              <a href="#" class="pagination-btn">3</a>
+              <a href="#" class="pagination-btn" aria-label="more page">...</a>
+
+              <a href="#" class="pagination-btn" aria-label="next page">
+                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+              </a>
+
+            </nav>
+
+          </div>
+
+          <div class="post-aside grid-list">
+
+            <div class="card aside-card">
+
+              <h3 class="headline headline-2 aside-title">
+                <span class="span">Popular Posts</span>
+              </h3>
+
+              <ul class="popular-list">
+
+                <li>
+                  <div class="popular-card">
+
+                    <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+                      <img src="{% static 'images/popular-post-1.jpg' %}" width="64" height="64" loading="lazy"
+                        alt="Creating is a privilege but it’s also a gift" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+
+                      <h4 class="headline headline-4 card-title">
+                        <a href="#" class="link hover-2">Creating is a privilege but it’s also a gift</a>
+                      </h4>
+
+                      <div class="warpper">
+                        <p class="card-subtitle">15 mins read</p>
+
+                        <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="popular-card">
+
+                    <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+                      <img src="{% static 'images/popular-post-2.jpg' %}" width="64" height="64" loading="lazy"
+                        alt="Being unique is better than being perfect" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+
+                      <h4 class="headline headline-4 card-title">
+                        <a href="#" class="link hover-2">Being unique is better than being perfect</a>
+                      </h4>
+
+                      <div class="warpper">
+                        <p class="card-subtitle">15 mins read</p>
+
+                        <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="popular-card">
+
+                    <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+                      <img src="{% static 'images/popular-post-3.jpg' %}" width="64" height="64" loading="lazy"
+                        alt="Every day, in every city and town across the country" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+
+                      <h4 class="headline headline-4 card-title">
+                        <a href="#" class="link hover-2">Every day, in every city and town across the country</a>
+                      </h4>
+
+                      <div class="warpper">
+                        <p class="card-subtitle">15 mins read</p>
+
+                        <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="popular-card">
+
+                    <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+                      <img src="{% static 'images/popular-post-4.jpg' %}" width="64" height="64" loading="lazy"
+                        alt="Your voice, your mind, your story, your vision" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+
+                      <h4 class="headline headline-4 card-title">
+                        <a href="#" class="link hover-2">Your voice, your mind, your story, your vision</a>
+                      </h4>
+
+                      <div class="warpper">
+                        <p class="card-subtitle">15 mins read</p>
+
+                        <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="popular-card">
+
+                    <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
+                      <img src="{% static 'images/popular-post-2.jpg' %}" width="64" height="64" loading="lazy"
+                        alt="Being unique is better than being perfect" class="img-cover">
+                    </figure>
+
+                    <div class="card-content">
+
+                      <h4 class="headline headline-4 card-title">
+                        <a href="#" class="link hover-2">Being unique is better than being perfect</a>
+                      </h4>
+
+                      <div class="warpper">
+                        <p class="card-subtitle">15 mins read</p>
+
+                        <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div class="card aside-card">
+
+              <h3 class="headline headline-2 aside-title">
+                <span class="span">Last Comment</span>
+              </h3>
+
+              <ul class="comment-list">
+
+                <li>
+                  <div class="comment-card">
+
+                    <blockquote class="card-text">
+                      “ Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
+                      roadrunner “
+                    </blockquote>
+
+                    <div class="profile-card">
+                      <figure class="profile-banner img-holder">
+                        <img src="{% static 'images/author-6.png' %}" width="32" height="32" loading="lazy" alt="Jane Cooper">
+                      </figure>
+
+                      <div>
+                        <p class="card-title">Jane Cooper</p>
+
+                        <time class="card-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="comment-card">
+
+                    <blockquote class="card-text">
+                      “ Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
+                      roadrunner “
+                    </blockquote>
+
+                    <div class="profile-card">
+                      <figure class="profile-banner img-holder">
+                        <img src="{% static 'images/author-7.png' %}" width="32" height="32" loading="lazy" alt="Katen Doe">
+                      </figure>
+
+                      <div>
+                        <p class="card-title">Katen Doe</p>
+
+                        <time class="card-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+                    </div>
+
+                  </div>
+                </li>
+
+                <li>
+                  <div class="comment-card">
+
+                    <blockquote class="card-text">
+                      “ Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
+                      roadrunner “
+                    </blockquote>
+
+                    <div class="profile-card">
+                      <figure class="profile-banner img-holder">
+                        <img src="{% static 'images/author-8.png' %}" width="32" height="32" loading="lazy"
+                          alt="Barbara Cartland">
+                      </figure>
+
+                      <div>
+                        <p class="card-title">Barbara Cartland</p>
+
+                        <time class="card-date" datetime="2022-04-15">15 April 2022</time>
+                      </div>
+                    </div>
+
+                  </div>
+                </li>
+
+              </ul>
+
+            </div>
+
+
+
+          </div>
+
+        </div>
+      </section>
 {% endblock %}
