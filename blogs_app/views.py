@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post, Category
-from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm
+from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.views import PasswordChangeView
 from django.views import generic
 # Class based Views
 
@@ -137,6 +138,20 @@ class UserEditView(generic.UpdateView):  # Edit admin Profile
 
     def get_object(self):
             return self.request.user
+    
+
+class ProfileEditView(generic.UpdateView):  
+    form_class = UpdateAdminProfileForm
+    template_name= 'user_profile.html'
+    success_url = reverse_lazy('blogs_app:home')
+
+    def get_object(self):
+            return self.request.user
+
+
+class ChangePasswordsView(PasswordChangeView):
+    from_class = PasswordChangeForm
+    success_url = reverse_lazy('blogs_app:home')
 
 
 ############################################################################################

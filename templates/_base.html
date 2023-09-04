@@ -95,6 +95,9 @@
                             </li>
                         {% endif %}
                         <li>
+                            <a class="navbar-link hover-1" href="{% url 'blogs_app:user-profile' %}" >Profile</a>
+                        </li>
+                        <li>
                             <a class="navbar-link hover-1" href="{% url 'users:logout' %}" >Logout</a>
                         </li>
                     
@@ -126,7 +129,7 @@
                     <ul class="link-list">
 
                         <li>
-                            <a href="#" class="navbar-bottom-link hover-1">Profile</a>
+                            <a href="{% url 'blogs_app:user-profile' %}" class="navbar-bottom-link hover-1">Profile</a>
                         </li>
 
                         <li>
