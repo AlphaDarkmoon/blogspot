@@ -250,6 +250,7 @@
                                 <div class="profile-card">
                                     <img src="{% static 'images/author-1.png' %}" width="48" height="48"
                                         loading="lazy" alt="Joseph" class="profile-banner">
+                                        <p>{{post.snippet}}</p>
                                     <div>
                                         <p class="card-title">{{ post.author.first_name }}</p>
                                         <p class="card-subtitle">{{ post.publish_date|date:"d M Y" }}</p>

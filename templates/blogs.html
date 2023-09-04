@@ -200,7 +200,7 @@
             <div class="blog-intro">
     
     <hr>
-    {{ post.body }}
+    {{ post.body|safe }}
     <hr>
               <p>Django's automatically generated admin site is one of the biggest strengths of the framework. The
                 centralized admin interface lets you easily view and manipulate your models' data. This can save you a

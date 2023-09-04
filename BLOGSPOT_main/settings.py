@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'jazzmin',
     'blogs_app',
     'users',
+    'ckeditor',
 
     'django.contrib.admin',
     'django.contrib.auth',

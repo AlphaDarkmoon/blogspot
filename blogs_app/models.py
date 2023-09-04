@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.conf import settings
 
-
+from ckeditor.fields import RichTextField
  
 
 #############################################
@@ -18,7 +18,8 @@ class Post(models.Model):
     banner_img = models.CharField(max_length=225, default='https://i.ibb.co/qgbtz4x/black-hole-1.png')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.CharField(max_length=225, default="python")
-    body = models.TextField()
+    snippet = models.CharField(max_length=255)
+    body = RichTextField(blank=True,null=True)
     post_time = models.DateField(auto_now_add = True)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='blog_posts')
 

@@ -92,13 +92,14 @@
                                   <tr>
                                     <td>
                                     </td>
-
                                     {% for post in object_list %}
+                                    <div class="card card-rounded">
+                                      <div class="card-body blog-list-card">
                                     <li>
                                         <a href="{% url 'blogs_app:articles-page' post.pk %}">{{post.title}}</a> --{{post.author.first_name}}
                                         {{post.author}}
                                         <br>
-                                        {{ post.body | slice:":200"| safe}}...
+                                        {{ post.body | slice:":50"| safe}}...
                                         {% comment %} click on category to category page {% endcomment %}
                                         | <a href="{% url 'blogs_app:category' post.category %}">{{post.category}}</a>  
                                         | {{post.post_time}}
@@ -109,10 +110,11 @@
                                         <a href="{% url 'blogs_app:update-blog' post.pk %}" class="btn btn-primary">Edit Post</a> 
                                         <a href="{% url 'blogs_app:delete-blog' post.pk %}" class="btn btn-danger">Delete Post</a>
                                         {% endif %}
-                                        <hr>
+                                        <hr style="color:#EB1254;height:4px;">
                                 
                                     </li>
-                                
+                                    </div>
+                                  </div>
                                     {% endfor %}
                                 </tbody>
                               </table>

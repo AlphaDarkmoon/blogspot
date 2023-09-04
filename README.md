@@ -159,13 +159,12 @@ python manage.py runserver
 - [ ]  Admin Page
 - [x]  Likes & Unlikes
 - [ ]  Comment & Discussion
-- [ ]  Styling Add Blogs
+- [x]  Styling Add Blogs
 - [ ]  Related Posts
 - [ ]  Search Feature
 - [ ]  Slugify Links
 - [ ]  Social Sharing
 - [ ]  Email Subscribers
-- [ ]  Author's Profile
 - [ ]  Pagination
 - [ ]  SEO optimization
 - [ ]  About Page

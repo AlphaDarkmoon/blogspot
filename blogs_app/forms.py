@@ -12,7 +12,7 @@ for item in choices:
 class PostForm(forms.ModelForm):            #improve UI using forms.py without html,css | using Bootstrap
     class Meta:
         model = Post
-        fields = ('title','title_tag','author','banner_img','category','body')
+        fields = ('title','title_tag','author','banner_img','category','snippet','body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
@@ -20,6 +20,7 @@ class PostForm(forms.ModelForm):            #improve UI using forms.py without h
             'author': forms.Select(attrs={'class':'form-control'}),
             'banner_img': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Image Link here'}),
             'category': forms.Select(choices=choice_list,attrs={'class':'form-control','placeholder':choices}),
+            'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...'}),
         }
 
@@ -28,11 +29,12 @@ class PostForm(forms.ModelForm):            #improve UI using forms.py without h
 class UpdatePostForm(forms.ModelForm):            #improve UI using forms.py without html,css | using Bootstrap
     class Meta:
         model = Post
-        fields = ('title','title_tag','body')
+        fields = ('title','title_tag','banner_img','snippet','body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
             'banner_img': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Image Link here'}),
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title tag here'}),
+            'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...','rows': 10}),
         }

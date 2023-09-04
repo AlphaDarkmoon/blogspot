@@ -5,7 +5,7 @@
 <h1>{{ post.title }}</h1>
     <small>by: {{ post.author.first_name}}</small>
     <hr>
-    {{ post.body }}
+    {{ post.body | safe }}
     <hr>
     <br>
     <a href="{% url 'home' %}" class="btn btn-secondary">back</a>
