@@ -1,5 +1,6 @@
 from django.urls import path
-from blogs_app.views import HomeView,ArticleDetailView,AllBlogsView, AddCatagoryView,Addpostview,CategoryView,AdminView, DeletePostView, HomePostView, UpdatePostView, LikeView
+from blogs_app.views import HomeView,ArticleDetailView,AllBlogsView, AddCatagoryView,Addpostview,CategoryView,AdminView, DeletePostView, HomePostView, UpdatePostView, LikeView,UserEditView
+from django.contrib.auth import views as auth_views
 
 app_name = 'blogs_app'
 
@@ -12,7 +13,9 @@ urlpatterns = [
     path('category/<str:categories>', CategoryView, name='category'),
     path('add_blogs', Addpostview.as_view(), name='add-blogs'),
     path('article/<int:pk>/remove', DeletePostView.as_view(), name='delete-blog'),
-    path('adminpage', AdminView, name='admin-view'),
+    path('adminpage', UserEditView.as_view(), name='admin-view'),
     path('article/edit/<int:pk>', UpdatePostView.as_view(), name='update-blog'), 
-    path('like/<int:pk>',LikeView, name='like-post'),                                                                                      
+    path('like/<int:pk>',LikeView, name='like-post'),  
+    path('1/password/',auth_views.PasswordChangeView.as_view()),     
+    path('userprofile',auth_views.PasswordChangeView.as_view(), name = 'user-profile'),                                                                                    
 ]

@@ -140,3 +140,5 @@ LOGIN_REDIRECT_URL = "blogs_app:home"       #made changes
 LOGOUT_REDIRECT_URL = "blogs_app:home"      #made changes
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

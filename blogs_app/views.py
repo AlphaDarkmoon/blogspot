@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post, Category
-from .forms import PostForm, UpdatePostForm
+from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth.forms import UserChangeForm
+from django.views import generic
 # Class based Views
 
 #########################################################################
@@ -124,6 +125,20 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('blogs_app:admin-view')
 
 
+
+############################################################################################
+#              let admin update user profile using frontend using CreateView               #
+############################################################################################
+
+class UserEditView(generic.UpdateView):  # Edit admin Profile
+    form_class = UpdateAdminProfileForm
+    template_name= 'admin_templates/admin_index.html'
+    success_url = reverse_lazy('blogs_app:home')
+
+    def get_object(self):
+            return self.request.user
+
+
 ############################################################################################
 #              let user update a blog or post using frontend using CreateView              #
 ############################################################################################
@@ -147,3 +162,4 @@ def LikeView(request,pk):
 
     return HttpResponseRedirect(reverse('blogs_app:articles-page',args=[str(pk)]))
     
+

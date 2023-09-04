@@ -12,6 +12,15 @@ from ckeditor.fields import RichTextField
 #       store post contents from backend    #
 #############################################
 
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete = models.CASCADE)
+    bio = models.CharField(max_length=225)
+    profile_pic = models.ImageField(null=True,blank = True, upload_to="images/admin/profile")
+
+    def __str__(self):
+        return str(self.user)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=60, default="tag for title...")

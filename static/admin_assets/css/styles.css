@@ -6,6 +6,10 @@
 
 
   #id_title,
+  #id_username,
+  #id_first_name,
+  #id_last_name,
+  #id_email,
   #id_title_tag,
   #id_author,
   #id_banner_img,
@@ -25,6 +29,10 @@
 
   /* Add a hover effect */
   #id_title:hover,
+  #id_username,
+  #id_last_name,
+  #id_email,
+  #id_first_name,
   #id_title_tag:hover,
   #id_author:hover,
   #id_banner_img:hover,
@@ -36,6 +44,10 @@
 
   /* Add focus styles */
   #id_title:focus,
+  #id_first_name,
+  #id_last_name,
+  #id_email,
+  #id_username,
   #id_title_tag:focus,
   #id_author:focus,
   #id_banner_img:focus,
