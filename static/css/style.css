@@ -238,7 +238,8 @@ body.nav-active { overflow: hidden; }
   line-height: var(--lineHeight-2);
 }
 
-.section-title { margin-block-end: 10px; }
+.section-title { margin-block-end: 10px;
+ }
 
 .headline .span {
   background-image: var(--gradient-1);
@@ -602,6 +603,8 @@ body.nav-active { overflow: hidden; }
   flex-wrap: wrap;
   gap: 30px;
 }
+
+
 
 .feature-card {
   padding: 20px;
@@ -1577,6 +1580,10 @@ body.nav-active { overflow: hidden; }
   margin-bottom: 20px; /* Add margin to separate the divs */
 }
 
+#name-auth{
+  margin: -10px;
+}
+
 /* Style for the container */
 .profile-container {
     position: relative;
@@ -1590,6 +1597,15 @@ body.nav-active { overflow: hidden; }
     display: block;
 }
 
+.profile-image img {
+  transition: transform 0.2s ease; /* Add a smooth transition */
+}
+
+.profile-image img:hover {
+  transform: translateY(-3px); /* Move the image up by 5 pixels on hover */
+}
+
+
 /* Style for the text */
 .profile-text {
     position: absolute;
@@ -1600,4 +1616,43 @@ body.nav-active { overflow: hidden; }
     padding: 5px 10px; /* Padding around the text */
     font-size: 14px; /* Font size */
     border-radius: 5px; /* Rounded corners */
+}
+
+
+.profile-container-bio{
+  margin-top: 10px;
+  
+}
+
+.bio-info{
+  background-color: hsla(216, 33%, 20%, 1);;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: -50px;
+  max-width: 1000px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: solid white 1px;
+}
+
+.insta{
+  float:left;
+}
+
+.git{
+  float: right;
+}
+
+
+#bio-line{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blank2{
+  height: 50px;
+}
+
+.editor-ch{
+  margin-bottom: -50px;
 }

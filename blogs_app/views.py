@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from .models import Post, Category
+from .models import Post, Category,Profile
 from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
@@ -153,7 +153,6 @@ class ChangePasswordsView(PasswordChangeView):
     from_class = PasswordChangeForm
     success_url = reverse_lazy('blogs_app:home')
 
-
 ############################################################################################
 #              let user update a blog or post using frontend using CreateView              #
 ############################################################################################
@@ -177,4 +176,13 @@ def LikeView(request,pk):
 
     return HttpResponseRedirect(reverse('blogs_app:articles-page',args=[str(pk)]))
     
+# def AuthorProfile(request):
+#     model = Post
+#     template_name = 'index.html'
+#     ordering = ['-id','post_time']
+#     return render(request, 'authorProfile.html')
 
+class AuthorProfile(ListView):
+    model = Post
+    template_name = 'authorProfile.html'
+    ordering = ['-id','post_time']

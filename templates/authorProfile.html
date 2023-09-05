@@ -1,0 +1,138 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block title %}BLOGSPOT | PROFILE{% endblock %}
+
+
+{% block content %}
+
+<main>
+    <article>
+
+        <!-- 
+        - #HERO
+      -->
+
+        <section class="hero" id="home" aria-label="home">
+            <div class="blank2"></div>
+            <center>
+                <h2 id='name-auth'>Yash Yadav</h2>
+                <div class="profile-container-bio">
+                    <div class="profile-image">
+                        <img src="{% static 'images/auth-logo.png' %}" alt="" width="200px" height="auto"
+                            style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                    </div>
+                    <div class="bio-info">
+                        <div class="social">
+                            <div class="insta">
+                                <img src="{% static 'images/social/insta.png' %}" alt="Instagram Logo Circle@pngkey.com"
+                                    width="40px" height="40px">
+                            </div>
+                            <div class="git">
+                                <img src="{% static 'images/social/git2.svg' %}" alt="Instagram Logo Circle@pngkey.com"
+                                    width="40px" height="40px">
+                            </div>
+                        </div>
+                        
+                        <br><br>
+                        
+ 
+                        <p>Meet Yash, a coding virtuoso. With a knack for solving puzzles in the digital realm, Yash crafts software masterpieces. Follow along on his coding adventures as he demystifies tech and inspires fellow developers. Explore the world of innovation with Yash at <a href="#" style="color:#ff3b76;">www.Yashfolio.dev.</a>  </p>
+                        <hr style="width:50px;margin-top:20px;margin-bottom: -5px;">
+                    </div>
+                    
+                </div>
+
+            </center>
+
+        </section>
+
+    </article>
+    <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+            <div class="editor-ch">
+            <h2 class="headline headline-2 section-title">
+                <span class="span">Editor's picked</span>
+            </h2>
+
+            <p class="section-text">
+                Featured and highly rated articles
+            </p>
+        </div>
+            <ul class="feature-list">
+
+                {% for post in object_list %}
+                {% if forloop.counter <= 5 %}
+                  <li>
+                    <div class="card feature-card">
+
+                        <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                            <img src="{{ post.banner_img.url }}" width="1602" height="903" loading="lazy"
+                                alt="python-training" class="img-cover">
+                        </figure>
+
+                        <div class="card-content">
+
+                            <div class="card-wrapper">
+                                <div class="card-tag">
+                                    <a href="#" class="span hover-2"><a
+                                            href="{% url 'blogs_app:category' post.category %}">{{post.category}}</a>
+                                    </a>
+                                </div>
+
+                                <div class="wrapper">
+                                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                                    <span class="span">4 hours read</span>
+                                </div>
+                            </div>
+
+                            <h3 class="headline headline-3">
+                                <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-title hover-2">
+                                    {{ post.title }}
+                                </a>
+                            </h3>
+
+                            <div class="card-wrapper">
+                                <div class="profile-card">
+                                    {% if post.author.profile.profile_pic %}
+                                    <img src="{{ post.author.profile.profile_pic.url }}" width="42" height="42"
+                                        loading="lazy" alt="Joseph" class="profile-banner">
+                                    {% else %}
+                                    <img src="{% static 'profile/profile_default.jpg' %}" width="42" height="42"
+                                        loading="lazy" alt="Joseph" class="profile-banner">
+                                    {% endif %}
+
+                                    <div>
+                                        <p class="card-title"> <a href="{% url 'blogs_app:author' %}">
+                                            {{ post.author.first_name }}</a> </p>
+                                        <p class="card-subtitle">{{ post.publish_date|date:"d M Y" }}</p>
+                                    </div>
+                                </div>
+                                <a href="#" class="card-btn">Read more</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+
+            <a href="#" class="btn btn-secondary">
+                <span class="span">Show More Posts</span>
+                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+
+        </div>
+
+        <img src="{% static 'images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt=""
+            class="feature-bg">
+
+    </section>
+</main>
+
+{% endblock %}
