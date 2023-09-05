@@ -21,7 +21,6 @@ class PostForm(forms.ModelForm):            #improve UI using forms.py without h
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title tag here'}),
             'author': forms.Select(attrs={'class':'form-control'}),
-            'banner_img': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Image Link here'}),
             'category': forms.Select(choices=choice_list,attrs={'class':'form-control','placeholder':choices}),
             'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...'}),
@@ -36,7 +35,7 @@ class UpdatePostForm(forms.ModelForm):            #improve UI using forms.py wit
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
-            'banner_img': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Image Link here'}),
+            
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title tag here'}),
             'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...','rows': 10}),

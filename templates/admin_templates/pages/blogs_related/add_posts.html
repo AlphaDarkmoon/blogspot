@@ -94,7 +94,7 @@
                                     </td>
 
                                     {% if user.is_authenticated %}
-                                        <form method="POST">
+                                        <form method="POST" enctype="multipart/form-data">
                                             <div class="mb-3 container add-blogs">
                                             {% csrf_token %}
                                             {{form.media}}

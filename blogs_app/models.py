@@ -24,7 +24,7 @@ class Profile(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     title_tag = models.CharField(max_length=60, default="tag for title...")
-    banner_img = models.CharField(max_length=225, default='https://i.ibb.co/qgbtz4x/black-hole-1.png')
+    banner_img = models.ImageField(null = True, blank=True, upload_to="images/blogs/blogs_banner")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category = models.CharField(max_length=225, default="python")
     snippet = models.CharField(max_length=255)

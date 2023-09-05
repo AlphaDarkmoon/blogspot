@@ -223,7 +223,7 @@
                     <div class="card feature-card">
     
                         <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
-                            <img src="{{ post.banner_img }}" width="1602" height="903"
+                            <img src="{{ post.banner_img.url }}" width="1602" height="903"
                                 loading="lazy" alt="python-training" class="img-cover">
                         </figure>
     
@@ -248,8 +248,13 @@
     
                             <div class="card-wrapper">
                                 <div class="profile-card">
-                                    <img src="{% static 'images/author-1.png' %}" width="48" height="48"
+                                  {% if post.author.profile.profile_pic %}
+                                    <img src="{{ post.author.profile.profile_pic.url }}" width="42" height="42"
                                         loading="lazy" alt="Joseph" class="profile-banner">
+                                  {% else %}
+                                  <img src="{% static 'profile/profile_default.jpg' %}" width="42" height="42"
+                                        loading="lazy" alt="Joseph" class="profile-banner">
+                                        {% endif %}
                                         <p>{{post.snippet}}</p>
                                     <div>
                                         <p class="card-title">{{ post.author.first_name }}</p>
