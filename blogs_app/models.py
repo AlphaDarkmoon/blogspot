@@ -14,6 +14,7 @@ from ckeditor.fields import RichTextField
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete = models.CASCADE)
+    name = models.CharField(max_length=80,default='name')
     bio = models.CharField(max_length=225)
     profile_pic = models.ImageField(null=True,blank = True, upload_to="images/admin/profile")
 
@@ -26,6 +27,7 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=60, default="tag for title...")
     banner_img = models.ImageField(null = True, blank=True, upload_to="images/blogs/blogs_banner")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author_name = models.CharField(max_length=60, default="...")
     category = models.CharField(max_length=225, default="python")
     snippet = models.CharField(max_length=255)
     body = RichTextField(blank=True,null=True)

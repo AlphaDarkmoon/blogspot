@@ -19,7 +19,7 @@ urlpatterns = [
     path('like/<int:pk>',LikeView, name='like-post'),  
     path('1/password/',auth_views.PasswordChangeView.as_view(template_name = 'change_pass.html')),
     path('password/',ChangePasswordsView.as_view(template_name = 'change_pass.html')),     
-    path('userprofile',ProfileEditView.as_view(), name = 'user-profile'),  
+    path('userprofile',views.update_profile, name = 'user-profile'),  
     # path('author', views.AuthorProfile, name='author'), 
     path ('author', AuthorProfile.as_view(), name='author'),                                                                                 
 ]

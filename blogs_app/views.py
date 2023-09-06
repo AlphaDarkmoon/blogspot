@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Post, Category,Profile
-from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm, PasswordChangeForm
+from .forms import PostForm, UpdatePostForm, UpdateAdminProfileForm, PasswordChangeForm,ProfileUpdateForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm
@@ -186,3 +186,16 @@ class AuthorProfile(ListView):
     model = Post
     template_name = 'authorProfile.html'
     ordering = ['-id','post_time']
+
+
+def update_profile(request):
+    profile = request.user.profile  # Get the user's profile
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('blogs_app:home')  # Replace 'profile' with the name of your profile view
+    else:
+        form = ProfileUpdateForm(instance=profile)
+    
+    return render(request, 'user_profile.html', {'form': form})

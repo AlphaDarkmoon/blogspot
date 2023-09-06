@@ -8,9 +8,7 @@ from .managers import CustomUserManager
 # Custom user model inheriting from AbstractBaseUser and PermissionsMixin
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
-    first_name = models.CharField(_("first name"), max_length=50, default="Unknown")
-    last_name = models.CharField(_("last name"), max_length=50, default="Unknown")
-    phone = models.CharField(_("phone number"), max_length=50, unique=True, default="Unknown")
+    username = models.TextField(_("User Name"), unique=True, default='username')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -18,7 +16,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Set the email field as the username field for authentication
     USERNAME_FIELD = "email"
     # Specify additional fields required for user creation (besides email and password)
-    REQUIRED_FIELDS = ["first_name", "last_name", "phone"]
+    REQUIRED_FIELDS = ['username',]
     # The REQUIRED_FIELDS should match the fields you've defined in your CustomUserCreationForm.
 
     # Use the CustomUserManager to manage this model

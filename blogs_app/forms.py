@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Post, Category, Profile
 
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
@@ -15,12 +15,13 @@ for item in choices:
 class PostForm(forms.ModelForm):            #improve UI using forms.py without html,css | using Bootstrap
     class Meta:
         model = Post
-        fields = ('title','title_tag','author','banner_img','category','snippet','body')
+        fields = ('title','title_tag','author','author_name','banner_img','category','snippet','body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title tag here'}),
             'author': forms.Select(attrs={'class':'form-control'}),
+            'author_name': forms.TextInput(attrs={'class':'form-control'}),
             'category': forms.Select(choices=choice_list,attrs={'class':'form-control','placeholder':choices}),
             'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
             'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...'}),
@@ -31,14 +32,16 @@ class PostForm(forms.ModelForm):            #improve UI using forms.py without h
 class UpdatePostForm(forms.ModelForm):            #improve UI using forms.py without html,css | using Bootstrap
     class Meta:
         model = Post
-        fields = ('title','title_tag','banner_img','snippet','body')
+        fields = ('title','title_tag','author','author_name','banner_img','category','snippet','body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter title here'}),
-            
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title tag here'}),
+            'author': forms.Select(attrs={'class':'form-control'}),
+            'author_name': forms.TextInput(attrs={'class':'form-control'}),
+            'category': forms.Select(choices=choice_list,attrs={'class':'form-control','placeholder':choices}),
             'snippet': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter snippet here'}),
-            'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...','rows': 10}),
+            'body': forms.Textarea(attrs={'class':'form-control','placeholder':'Enter body here...'}),
         }
 
 
@@ -49,7 +52,7 @@ class UpdateAdminProfileForm(UserChangeForm):
     class Meta:
         model = User
         # Specify the fields to be displayed and filled in the form
-        fields = ("username","email", "first_name", "last_name")
+        fields = ( "first_name", "last_name")
     
     # Define individual form fields with placeholder attributes
 
@@ -62,3 +65,8 @@ class PasswordChangeForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ('old_password','new_password1','new_password2')
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name','bio', 'profile_pic']

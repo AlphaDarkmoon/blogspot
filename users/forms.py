@@ -8,17 +8,17 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         # Specify the fields to be displayed and filled in the form
-        fields = ("email", "first_name", "last_name", "phone")
+        fields = ('email','username')
         # Add placeholder attributes for the email input field
         widgets = {
             'email': forms.EmailInput(attrs={'placeholder': "Email address"}),
+            'Username': forms.TextInput(attrs={'placeholder': "Username"}),
         }
     
     # Define individual form fields with placeholder attributes
     email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "Email"}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "First name"}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "Last name"}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "Phone"}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "Username"}))
+
     
 
 # Custom form for editing user details, inheriting from UserChangeForm
@@ -26,4 +26,4 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         # Specify the fields to be displayed and edited in the form
-        fields = ("email",)
+        fields = ("email","username")

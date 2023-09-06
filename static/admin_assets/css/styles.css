@@ -14,7 +14,8 @@
   #id_author,
   #id_banner_img,
   #id_body,
-  #id_name {
+  #id_name,
+  #id_bio {
       width: 100%;
       padding: 12px 20px;
       margin: 8px 0;
@@ -38,7 +39,8 @@
   #id_banner_img:hover,
   #id_category:hover,
   #id_body:hover,
-  #id_name:hover {
+  #id_name:hover,
+  #id_bio:hover {
       border-color: #666;
   }
 
@@ -53,7 +55,8 @@
   #id_banner_img:focus,
   #id_category:focus,
   #id_body:focus,
-  #id_name:focus {
+  #id_name:focus,
+  #id_bio:focus {
       border-color: #007BFF;
       outline: none;
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);

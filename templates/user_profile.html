@@ -16,58 +16,73 @@
       -->
 
     <section class="hero" id="home" aria-label="home">
-        
+
       <br><br>
       <center>
-        
+
         <div class="container-block">
           <div class="left-div left-text">
             <div class="container-profile">
               <div class="form-group">
 
-                <form action="" class="form-border" method="POST">
-                  <center>
-                    
-                      <div class="profile-container">
-                        <img src="{% static 'images/author-1.png' %}" alt="" width="200px" height="auto"
-                      style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
-                        <div class="profile-text"><a href="#">Change</a></div>
-                    </div>
-                  </center>
-                  <br><br>
+
+                <form method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
-                  {{ form.as_p }}
-                  <hr>
-                  <br>
-                  <div class="bio">
-                    {{ user.profile.bio}}
-                  </div>
-                  <br>
-                  <br>
                   <center>
-                  <button class='btn btn-primary'>
-                    SAVE
-                  </button>
-                </center>
-                </form>
+                      <!-- Display the current profile picture -->
+                      {% if form.instance.profile_pic %}
+                          <div class="profile-container">
+                              <img src="{{ form.instance.profile_pic.url }}" alt="" width="200px" height="auto"
+                                   style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                              <div class="profile-text">
+                                  <label class="custom-file-upload">
+                                      <input type="file" name="{{ form.profile_pic.name }}" accept="image/*"
+                                             onchange="clearFileInput()">
+                                      Change
+                                  </label>
+                              </div>
+                          </div>
+                      {% endif %}
+                  </center>
+                  <div class="form-group">
+                    <label for="{{ form.name.id }}">Name:</label>
+                    <input type="text" id="{{ form.name.id }}" name="{{ form.name.name }}" value="{{ form.instance.name }}">
+                </div>
+                  <!-- Render the 'bio' field as a textarea with 4 rows -->
+                  <div class="form-group">
+                    <label for="{{ form.bio.id }}" class="bio-label">{{ form.bio.label_tag }}</label>
+                    <textarea id="{{ form.bio.id }}" name="{{ form.bio.name }}" rows="4" class="bio-textarea" placeholder="Enter your bio here..." >{{ form.instance.bio }}</textarea>
+                </div>
+                <br>
+                  <button type="submit" class='btn btn-primary'>Save</button>
+              </form>
+              
               </div>
             </div>
           </div>
           <div class="right-div right-text">
-            
-            <div class="top-div"><p>Join Blogs-POT and earn.</p>
+
+            <div class="top-div">
+              <p>Join Blogs-POT and earn.</p>
               <br>
               <hr>
               <br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos architecto necessitatibus nihil sed ex quis numquam exercitationem voluptate excepturi. Nulla accusantium animi officia labore rerum qui odio, modi dolor a nihil aut quasi sed, repudiandae, unde rem quae delectus. Quo in saepe reiciendis et odit eligendi error.
-              <br>
-              <br> <a href="#" style="color:#ff3b76;">Learn more.</a></p></div>
-            <div class="bottom-div"><h4>Want to add your blog on Blogs-POT.</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos architecto necessitatibus nihil
+                sed ex quis numquam exercitationem voluptate excepturi. Nulla accusantium animi officia labore rerum qui
+                odio, modi dolor a nihil aut quasi sed, repudiandae, unde rem quae delectus. Quo in saepe reiciendis et
+                odit eligendi error.
+                <br>
+                <br> <a href="#" style="color:#ff3b76;">Learn more.</a>
+              </p>
+            </div>
+            <div class="bottom-div">
+              <h4>Want to add your blog on Blogs-POT.</h4>
               <br>
               <br>
               <button class='btn btn-primary'>
                 Contact Us
-              </button></div>
+              </button>
+            </div>
           </div>
         </div>
       </center>
@@ -80,7 +95,14 @@
 
 
 
-
+    <script>
+      function clearFileInput() {
+        var fileInput = document.querySelector('input[type="file"]');
+        fileInput.value = '';
+        var fileInputimg = document.querySelector('input[type="file"]');
+        fileInputimg.value = '';
+      }
+    </script>
 
   </article>
 </main>

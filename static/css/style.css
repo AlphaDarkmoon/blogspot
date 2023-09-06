@@ -1581,7 +1581,7 @@ body.nav-active { overflow: hidden; }
 }
 
 #name-auth{
-  margin: -10px;
+  margin-bottom: -10px;
 }
 
 /* Style for the container */
@@ -1655,4 +1655,82 @@ body.nav-active { overflow: hidden; }
 
 .editor-ch{
   margin-bottom: -50px;
+}
+
+
+
+/* Default width for all screen sizes */
+#id_bio {
+  width: 250px;
+}
+
+/* Media query for screens 768px wide and larger */
+@media (min-width: 768px) {
+  #id_bio {
+      width: 400px; /* Adjust the width for larger screens */
+  }
+
+}
+
+/* Media query for screens 992px wide and larger */
+@media (min-width: 992px) {
+  #id_bio {
+      width: 500px; /* Adjust the width for even larger screens */
+  }
+
+}
+
+
+
+
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none; /* Hide the original file input */
+}
+
+/* Default styling for all screen sizes */
+.logout {
+  display: block; /* Display the li by default */
+}
+
+/* Media query for screens less than 1170px wide */
+@media (max-width: 1199px) {
+  .logout {
+      display: none; /* Hide the li when screen size is less than 1170px */
+  }
+}
+
+/* Default styling for the bio textarea */
+.bio-textarea {
+  width: 600px; /* Default width */
+  padding: 10px;
+  resize: vertical;
+  border: 1px solid #ccc;
+  background-color: #1c283300;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .bio-textarea {
+      width: 100%; /* Adjust the width to fit the screen */
+  }
+}
+
+
+.bio-label {
+  display: none;
+  font-weight: bold; /* Make the label text bold */
+  color: #333; /* Set the label text color */
+  font-size: 18px; /* Adjust the font size as needed */
+  margin-bottom: 10px; /* Add spacing between the label and textarea */
 }

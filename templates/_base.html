@@ -101,7 +101,7 @@
                             <a class="navbar-link hover-1" href="{% url 'blogs_app:user-profile' %}" >Profile</a>
                         </li>
                         <li>
-                            <a class="navbar-link hover-1" href="{% url 'users:logout' %}" >Logout</a>
+                            <a class="navbar-link hover-1 logout" href="{% url 'users:logout' %}" >Logout</a>
                         </li>
                     
 
@@ -117,17 +117,14 @@
                 <div class="navbar-bottom">
 
                     <div class="profile-card">
-                        <img src="{% static 'images/author-1.png' %}" width="48" height="48" alt="Steven"
-                            class="profile-banner">
-
+                        <img src="{{ user.profile.profile_pic.url }}" width="48" height="48" alt="User Profile Picture" class="profile-banner">
+                        
                         <div>
-                            <p class="card-title">Hello {{ user.first_name }} !</p>
-
-                            <p class="card-subtitle">
-                                You have 3 new messages
-                            </p>
+                            <p class="card-title">Hello {{ user.profile.name }} !</p>
+                            <p class="card-subtitle">You have 3 new messages</p>
                         </div>
                     </div>
+                    
 
                     <ul class="link-list">
 
@@ -139,17 +136,12 @@
                             <a href="#" class="navbar-bottom-link hover-1">Articles Saved</a>
                         </li>
 
-                        <li>
-                            <a href="#" class="navbar-bottom-link hover-1">Add New Post</a>
-                        </li>
+                        
 
                         <li>
                             <a href="#" class="navbar-bottom-link hover-1">My Likes</a>
                         </li>
 
-                        <li>
-                            <a href="#" class="navbar-bottom-link hover-1">Account Setting</a>
-                        </li>
 
                         <li>
                             <a href="{% url 'users:logout' %}" class="navbar-bottom-link hover-1">Sign Out</a>
