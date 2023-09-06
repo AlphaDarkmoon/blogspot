@@ -9,22 +9,108 @@
 {% block content %}
 
 <main>
-    <ul>
-        <div class="all-blogs-list">
-          <h1>Post</h1>
-          <br>
-          {% for post in object_list %}
-          <li>
-            <a href="{% url 'articles-page' post.pk %}">{{post.title}}</a> <span class="author">-- {{post.author.first_name}} {{post.author.last_name}}</span>
-            <br>
-            <span class="post-time">{{post.post_time}}</span>
-            <br>
-            <br>
-            <hr>
-          </li>
+
+  <section class="section feature" aria-label="feature" id="featured">
+    <div class="container">
+
+      <div class="post-main">
+
+        <h2 class="headline headline-2 section-title">
+          <span class="span"><h1>{{categories}}</h1></span>
+        </h2>
+
+        <p class="section-text">
+          Don't miss the latest Blogs
+        </p>
+        {% if category_posts %}
+        <ul class="feature-list">
+            {% for post in category_posts %}
+            <li>
+              <div class="card feature-card">
+    
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="{{ post.banner_img.url }}" width="1602" height="903" loading="lazy" alt="python-training"
+                    class="img-cover">
+                </figure>
+    
+                <div class="card-content">
+    
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2"><a
+                          href="{% url 'blogs_app:category' post.category %}">{{post.category}}</a> </a>
+                    </div>
+    
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">4 hours read</span>
+                    </div>
+                  </div>
+    
+                  <h3 class="headline headline-3">
+                    <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-title hover-2">
+                      {{ post.title }}
+                    </a>
+                  </h3>
+    
+                  <div class="card-wrapper">
+                    <div class="profile-card">
+                      {% if post.author.profile.profile_pic %}
+                      <img src="{{ post.author.profile.profile_pic.url }}" width="42" height="42" loading="lazy"
+                        alt="Joseph" class="profile-banner">
+                      {% else %}
+                      <img src="{% static 'profile/profile_default.jpg' %}" width="42" height="42" loading="lazy"
+                        alt="Joseph" class="profile-banner">
+                      {% endif %}
+    
+                      <div>
+                        <p class="card-title"> <a href="{% url 'blogs_app:author' %}">{{ post.author_name}}</a>
+                        </p>
+                        <p class="card-subtitle">{{ post.publish_date|date:"d M Y" }}</p>
+                      </div>
+                    </div>
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+    
+                </div>
+    
+              </div>
+            </li>
+    
           {% endfor %}
-        </div>
-      </ul>
+
+        </ul>
+        {% else %}
+            <h2>Page does not exist (0_0!)</h2>
+        {% endif %}
+
+
+        <nav aria-label="pagination" class="pagination">
+          {% if category_posts.has_previous %}
+          <a href="?page={{ category_posts.previous_page_number }}" class="pagination-btn" aria-label="previous page">
+              <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+          </a>
+          {% endif %}
+      
+          {% for page_num in category_posts.paginator.page_range %}
+          <a href="?page={{ page_num }}" class="pagination-btn">{{ page_num }}</a>
+          {% endfor %}
+      
+          {% if category_posts.has_next %}
+          <a href="?page={{ category_posts.next_page_number }}" class="pagination-btn" aria-label="next page">
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+          {% endif %}
+      </nav>
+      
+
+      </div>
+
+
+    </div>
+</section>
+
+
 </main>
 
 {% endblock %}

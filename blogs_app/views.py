@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import generic
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 
 # Class based Views
 
@@ -32,12 +32,13 @@ class HomeView(ListView):
 #              HomeView to show all of the post titles on index.html    #
 #########################################################################
 
-class AllBlogsView(ListView):
-    model = Post
-    template_name = 'all_blogs.html'
-    ordering = ['-id','post_time']
 
-
+# class AllBlogsView(ListView):
+#     model = Post
+#     template_name = 'all_blogs.html'
+#     context_object_name = 'posts'  # Change this to 'posts'
+#     ordering = ['-id', 'post_time']
+#     paginate_by = 5  # Set the number of items per page
 
 
 ############################################################################################
@@ -62,6 +63,7 @@ class ArticleDetailView(DetailView):
         context['liked'] = liked
         context['total_likes'] = total_likes
         return context
+    
 
 
 ############################################################################################
@@ -162,6 +164,16 @@ class ChangePasswordsView(PasswordChangeView):
 
 def AdminView(request):
     return render(request, 'admin_templates/admin_index.html')
+
+
+def AllBlogsView(request):
+    all_posts = Post.objects.all()  # Fetch all posts
+    paginator = Paginator(all_posts, 5)  # Show 4 posts per page
+
+    page = request.GET.get('page')
+    category_posts = paginator.get_page(page)
+
+    return render(request, 'all_blogs.html', {'category_posts': category_posts})
 
 
 def CategoryView(request, categories):
