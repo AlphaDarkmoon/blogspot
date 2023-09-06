@@ -82,22 +82,26 @@
             {% else %}
                 <h2>Page does not exist (0_0!)</h2>
             {% endif %}
+
+
             <nav aria-label="pagination" class="pagination">
-
-              <a href="#" class="pagination-btn" aria-label="previous page">
-                <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+              {% if category_posts.has_previous %}
+              <a href="?page={{ category_posts.previous_page_number }}" class="pagination-btn" aria-label="previous page">
+                  <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
               </a>
-
-              <a href="#" class="pagination-btn">1</a>
-              <a href="#" class="pagination-btn">2</a>
-              <a href="#" class="pagination-btn">3</a>
-              <a href="#" class="pagination-btn" aria-label="more page">...</a>
-
-              <a href="#" class="pagination-btn" aria-label="next page">
-                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+              {% endif %}
+          
+              {% for page_num in category_posts.paginator.page_range %}
+              <a href="?page={{ page_num }}" class="pagination-btn">{{ page_num }}</a>
+              {% endfor %}
+          
+              {% if category_posts.has_next %}
+              <a href="?page={{ category_posts.next_page_number }}" class="pagination-btn" aria-label="next page">
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
               </a>
-
-            </nav>
+              {% endif %}
+          </nav>
+          
 
           </div>
 
@@ -327,5 +331,7 @@
           </div>
 
         </div>
-      </section>
+    </section>
+
+
 {% endblock %}

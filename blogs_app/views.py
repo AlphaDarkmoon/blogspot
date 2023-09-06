@@ -7,6 +7,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import generic
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Class based Views
 
 #########################################################################
@@ -160,9 +163,17 @@ class ChangePasswordsView(PasswordChangeView):
 def AdminView(request):
     return render(request, 'admin_templates/admin_index.html')
 
+
 def CategoryView(request, categories):
-    category_posts = Post.objects.filter(category = categories)
-    return render(request, 'admin_templates/pages/blogs_related/categories.html', {'categories': categories,'category_posts':category_posts})
+    category_posts = Post.objects.filter(category=categories)
+    paginator = Paginator(category_posts, 4)  # Show 4 posts per page
+
+    page = request.GET.get('page')
+    category_posts = paginator.get_page(page)
+
+    return render(request, 'admin_templates/pages/blogs_related/categories.html', {'categories': categories, 'category_posts': category_posts})
+
+
 
 def LikeView(request,pk):
     post = get_object_or_404(Post,id=request.POST.get('post_id'))
