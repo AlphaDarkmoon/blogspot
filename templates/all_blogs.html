@@ -18,11 +18,19 @@
         <h2 class="headline headline-2 section-title">
           <span class="span"><h1>{{categories}}</h1></span>
         </h2>
+        <form method="GET" action="{% url 'blogs_app:all-blogs' %}" class="search-form">
+          <div class="search-bar">
+              <input type="text" name="q" placeholder="Search..." value="{{ search_query|default:'' }}" class="search-input">
+              
+          </div>
+      </form>
+      
 
+        
+        {% if category_posts %}
         <p class="section-text">
           Don't miss the latest Blogs
         </p>
-        {% if category_posts %}
         <ul class="feature-list">
             {% for post in category_posts %}
             <li>
@@ -81,7 +89,12 @@
 
         </ul>
         {% else %}
-            <h2>Page does not exist (0_0!)</h2>
+        <center>
+          <br>
+          <br>
+            <h4>(0_0!)<br>It seems like we could not find the page,please try with diferent perameters.</h4>
+            <img src="{% static 'images/404e.png' %}" alt="" height="auto" width="90%">
+          </center>
         {% endif %}
 
 

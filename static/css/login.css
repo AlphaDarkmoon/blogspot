@@ -191,8 +191,8 @@ button[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
-    margin-bottom: 100px;
+    height: 60vh;
+    margin-bottom: 120px;
   }
 
   form p {

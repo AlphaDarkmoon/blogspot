@@ -1734,3 +1734,46 @@ body.nav-active { overflow: hidden; }
   font-size: 18px; /* Adjust the font size as needed */
   margin-bottom: 10px; /* Add spacing between the label and textarea */
 }
+
+/* Add this CSS to your stylesheet or style tag */
+
+/* Style for the search bar container */
+
+.search-form{
+  background-color: #000d1a00;
+  border: none;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff00;
+  border: 1px solid #1f1d1d00;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.search-bar input{
+  background-color: white;
+}
+
+/* Style for the search input */
+.search-input {
+  flex-grow: 1;
+    border: none;
+    outline: none;
+  padding: 100px;
+}
+
+/* Style for the search button with an icon */
+.search-button {
+  background-color: transparent;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+  height: 45px;
+}
+
+

@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import generic
+from django.db.models import Q
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 
@@ -167,13 +168,20 @@ def AdminView(request):
 
 
 def AllBlogsView(request):
-    all_posts = Post.objects.all()  # Fetch all posts
-    paginator = Paginator(all_posts, 5)  # Show 4 posts per page
-
-    page = request.GET.get('page')
-    category_posts = paginator.get_page(page)
-
-    return render(request, 'all_blogs.html', {'category_posts': category_posts})
+    search_query = request.GET.get('q')
+    if search_query:
+        category_posts = Post.objects.filter(
+            Q(title__icontains=search_query) |
+            Q(category__icontains=search_query) |
+            Q(snippet__icontains=search_query)
+        )
+    else:
+        all_posts = Post.objects.all()
+        paginator = Paginator(all_posts, 5)
+        page = request.GET.get('page')
+        category_posts = paginator.get_page(page)
+    
+    return render(request, 'all_blogs.html', {'category_posts': category_posts, 'search_query': search_query})
 
 
 def CategoryView(request, categories):
