@@ -30,29 +30,18 @@
                   {% csrf_token %}
                   <center>
                       <!-- Display the current profile picture -->
-                      {% if form.instance.profile_pic %}
-                          <div class="profile-container">
-                              <img src="{{ form.instance.profile_pic.url }}" alt="" width="200px" height="auto"
-                                   style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
-                              <div class="profile-text">
-                                  <label class="custom-file-upload">
-                                      <input type="file" name="{{ form.profile_pic.name }}" accept="image/*"
-                                             onchange="clearFileInput()">
-                                      Change
-                                  </label>
-                              </div>
-                          </div>
-                      {% endif %}
+                      
+                      
+                        <img src="{% static 'images/auth-logo.png' %}" alt="" width="200px" height="auto"
+                            style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+
                   </center>
                   <div class="form-group">
                     <label for="{{ form.name.id }}">Name:</label>
-                    <input type="text" id="{{ form.name.id }}" name="{{ form.name.name }}" value="{{ form.instance.name }}">
+                    <input type="text" class = 'name-input' id="{{ form.name.id }}" name="{{ form.name.name }}" value="{{ form.instance.name }}">
                 </div>
                   <!-- Render the 'bio' field as a textarea with 4 rows -->
-                  <div class="form-group">
-                    <label for="{{ form.bio.id }}" class="bio-label">{{ form.bio.label_tag }}</label>
-                    <textarea id="{{ form.bio.id }}" name="{{ form.bio.name }}" rows="4" class="bio-textarea" placeholder="Enter your bio here..." >{{ form.instance.bio }}</textarea>
-                </div>
+                  
                 <br>
                   <button type="submit" class='btn btn-primary'>Save</button>
               </form>

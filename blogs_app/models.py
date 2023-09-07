@@ -15,8 +15,7 @@ from ckeditor.fields import RichTextField
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete = models.CASCADE)
     name = models.CharField(max_length=80,default='name')
-    bio = models.CharField(max_length=225)
-    profile_pic = models.ImageField(null=True,blank = True, upload_to="images/admin/profile")
+    profile_pic = models.ImageField(null=True,blank = True, upload_to="images/admin/profile",default='images/profile/profile_default.jpg')
 
     def __str__(self):
         return str(self.user)

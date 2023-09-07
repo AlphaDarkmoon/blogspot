@@ -52,7 +52,7 @@ class UpdateAdminProfileForm(UserChangeForm):
     class Meta:
         model = User
         # Specify the fields to be displayed and filled in the form
-        fields = ( "first_name", "last_name")
+        fields = ( "username", "email")
     
     # Define individual form fields with placeholder attributes
 
@@ -69,4 +69,4 @@ class PasswordChangeForm(PasswordChangeForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name','bio', 'profile_pic']
+        fields = ['name', 'profile_pic']

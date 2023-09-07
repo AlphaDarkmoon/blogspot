@@ -221,62 +221,66 @@
 
         <ul class="feature-list">
 
-          {% for post in object_list %}
-          {% if forloop.counter <= 5 %} <li>
-            <div class="card feature-card">
-
-              <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
-                <img src="{{ post.banner_img.url }}" width="1602" height="903" loading="lazy" alt="python-training"
-                  class="img-cover">
-              </figure>
-
-              <div class="card-content">
-
-                <div class="card-wrapper">
-                  <div class="card-tag">
-                    <a href="#" class="span hover-2"><a
-                        href="{% url 'blogs_app:category' post.category %}">{{post.category}}</a> </a>
-                  </div>
-
-                  <div class="wrapper">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                    <span class="span">4 hours read</span>
-                  </div>
-                </div>
-
-                <h3 class="headline headline-3">
-                  <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-title hover-2">
-                    {{ post.title }}
-                  </a>
-                </h3>
-
-                <div class="card-wrapper">
-                  <div class="profile-card">
-                    {% if post.author.profile.profile_pic %}
-                    <img src="{{ post.author.profile.profile_pic.url }}" width="42" height="42" loading="lazy"
-                      alt="Joseph" class="profile-banner">
-                    {% else %}
-                    <img src="{% static 'profile/profile_default.jpg' %}" width="42" height="42" loading="lazy"
-                      alt="Joseph" class="profile-banner">
-                    {% endif %}
-
-                    <div>
-                      <p class="card-title"> <a href="{% url 'blogs_app:author' %}">{{ post.author_name}}</a>
-                      </p>
-                      <p class="card-subtitle">{{ post.publish_date|date:"d M Y" }}</p>
+          {% for post in random_posts %}
+          {% if forloop.counter <= 5 %}
+            <li>
+              <div class="card feature-card">
+        
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="{{ post.banner_img.url }}" width="1602" height="903" loading="lazy" alt="python-training"
+                    class="img-cover">
+                </figure>
+        
+                <div class="card-content">
+        
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">
+                        <a href="{% url 'blogs_app:category' post.category %}">{{post.category}}</a>
+                      </a>
+                    </div>
+        
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">4 hours read</span>
                     </div>
                   </div>
-                  <a href="#" class="card-btn">Read more</a>
+        
+                  <h3 class="headline headline-3">
+                    <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-title hover-2">
+                      {{ post.title }}
+                    </a>
+                  </h3>
+        
+                  <div class="card-wrapper">
+                    <div class="profile-card">
+                      {% if post.author.profile.profile_pic %}
+                      <img src="{{ post.author.profile.profile_pic.url }}" width="42" height="42" loading="lazy"
+                        alt="Joseph" class="profile-banner">
+                      {% else %}
+                      <img src="{% static 'profile/profile_default.jpg' %}" width="42" height="42" loading="lazy"
+                        alt="Joseph" class="profile-banner">
+                      {% endif %}
+        
+                      <div>
+                        <p class="card-title">
+                          <a href="{% url 'blogs_app:author' %}">{{ post.author_name}}</a>
+                        </p>
+                        <p class="card-subtitle">{{ post.publish_date|date:"d M Y" }}</p>
+                      </div>
+                    </div>
+                    <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-btn">Read more</a>
+                  </div>
+        
                 </div>
-
+        
               </div>
-
-            </div>
             </li>
-            {% endif %}
-            {% endfor %}
-
+          {% endif %}
+          {% endfor %}
+        
         </ul>
+        
 
         <a href="{% url 'blogs_app:all-blogs' %}" class="btn btn-secondary">
           <span class="span">Show More Posts</span>
@@ -347,15 +351,21 @@
           <p class="section-text">
             Don't miss the latest trends
           </p>
+          {% comment %} ------------------------------------------------------- {% endcomment %}
+
+
+
+          {% comment %} ------------------------------------------------------- {% endcomment %}
 
           <ul class="grid-list">
-
+            {% for post in recent_posts %}
+            {% if forloop.counter <= 6 %} 
             <li>
               <div class="recent-post-card">
 
                 <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                  <img src="{% static 'images/recent-post-1.jpg' %}" width="271" height="258" loading="lazy"
-                    alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
+                  <img src="{{ post.banner_img.url }}" width="1602" height="903" loading="lazy" alt="python-training"
+                  class="img-cover">
                 </figure>
 
                 <div class="card-content">
@@ -363,25 +373,20 @@
                   <a href="#" class="card-badge">Working Tips</a>
 
                   <h3 class="headline headline-3 card-title">
-                    <a href="#" class="link hover-2">Helpful Tips for Working from Home as a Freelancer</a>
+                    <a href="{% url 'blogs_app:articles-page' post.pk %}" class="link hover-2">{{ post.title }}</a>
                   </h3>
 
                   <p class="card-text">
-                    Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
-                    roadrunner flapped lynx far that and jeepers giggled far and far
+                    {{ post.snippet }}
                   </p>
 
                   <div class="card-wrapper">
                     <div class="card-tag">
-                      <a href="#" class="span hover-2"># Travel</a>
-
-                      <a href="#" class="span hover-2"># Lifestyle</a>
+                      <a href="#" class="span hover-2">#{{post.category}}</a>
                     </div>
 
                     <div class="wrapper">
-                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">3 mins read</span>
+                       <a href="{% url 'blogs_app:articles-page' post.pk %}" class="card-btn">Read more</a>
                     </div>
                   </div>
 
@@ -390,184 +395,12 @@
               </div>
             </li>
 
-            <li>
-              <div class="recent-post-card">
+            {% endif %}
+            {% endfor %}
 
-                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                  <img src="{% static 'images/recent-post-2.jpg' %}" width="271" height="258" loading="lazy"
-                    alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-badge">Working Tips</a>
-
-                  <h3 class="headline headline-3 card-title">
-                    <a href="#" class="link hover-2">Helpful Tips for Working from Home as a Freelancer</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
-                    roadrunner flapped lynx far that and jeepers giggled far and far
-                  </p>
-
-                  <div class="card-wrapper">
-                    <div class="card-tag">
-                      <a href="#" class="span hover-2"># Travel</a>
-
-                      <a href="#" class="span hover-2"># Lifestyle</a>
-                    </div>
-
-                    <div class="wrapper">
-                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">3 mins read</span>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="recent-post-card">
-
-                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                  <img src="{% static 'images/recent-post-3.jpg' %}" width="271" height="258" loading="lazy"
-                    alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-badge">Working Tips</a>
-
-                  <h3 class="headline headline-3 card-title">
-                    <a href="#" class="link hover-2">Helpful Tips for Working from Home as a Freelancer</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
-                    roadrunner flapped lynx far that and jeepers giggled far and far
-                  </p>
-
-                  <div class="card-wrapper">
-                    <div class="card-tag">
-                      <a href="#" class="span hover-2"># Travel</a>
-
-                      <a href="#" class="span hover-2"># Lifestyle</a>
-                    </div>
-
-                    <div class="wrapper">
-                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">3 mins read</span>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="recent-post-card">
-
-                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                  <img src="{% static 'images/recent-post-4.jpg' %}" width="271" height="258" loading="lazy"
-                    alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-badge">Working Tips</a>
-
-                  <h3 class="headline headline-3 card-title">
-                    <a href="#" class="link hover-2">Helpful Tips for Working from Home as a Freelancer</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
-                    roadrunner flapped lynx far that and jeepers giggled far and far
-                  </p>
-
-                  <div class="card-wrapper">
-                    <div class="card-tag">
-                      <a href="#" class="span hover-2"># Travel</a>
-
-                      <a href="#" class="span hover-2"># Lifestyle</a>
-                    </div>
-
-                    <div class="wrapper">
-                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">3 mins read</span>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="recent-post-card">
-
-                <figure class="card-banner img-holder" style="--width: 271; --height: 258;">
-                  <img src="{% static 'images/recent-post-5.jpg' %}" width="271" height="258" loading="lazy"
-                    alt="Helpful Tips for Working from Home as a Freelancer" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-badge">Working Tips</a>
-
-                  <h3 class="headline headline-3 card-title">
-                    <a href="#" class="link hover-2">Helpful Tips for Working from Home as a Freelancer</a>
-                  </h3>
-
-                  <p class="card-text">
-                    Gosh jaguar ostrich quail one excited dear hello and bound and the and bland moral misheard
-                    roadrunner flapped lynx far that and jeepers giggled far and far
-                  </p>
-
-                  <div class="card-wrapper">
-                    <div class="card-tag">
-                      <a href="#" class="span hover-2"># Travel</a>
-
-                      <a href="#" class="span hover-2"># Lifestyle</a>
-                    </div>
-
-                    <div class="wrapper">
-                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">3 mins read</span>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-            </li>
 
           </ul>
 
-          <nav aria-label="pagination" class="pagination">
-
-            <a href="#" class="pagination-btn" aria-label="previous page">
-              <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
-            </a>
-
-            <a href="#" class="pagination-btn">1</a>
-            <a href="#" class="pagination-btn">2</a>
-            <a href="#" class="pagination-btn">3</a>
-            <a href="#" class="pagination-btn" aria-label="more page">...</a>
-
-            <a href="#" class="pagination-btn" aria-label="next page">
-              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-            </a>
-
-          </nav>
 
         </div>
 
@@ -580,7 +413,8 @@
             </h3>
 
             <ul class="popular-list">
-
+              {% for post in top_liked_posts %}
+              {% if forloop.counter <= 6 %} 
               <li>
                 <div class="popular-card">
 
@@ -592,13 +426,13 @@
                   <div class="card-content">
 
                     <h4 class="headline headline-4 card-title">
-                      <a href="#" class="link hover-2">Creating is a privilege but it’s also a gift</a>
+                      <a href="{% url 'blogs_app:articles-page' post.pk %}" class="link hover-2">{{ post.title }}</a>
                     </h4>
 
                     <div class="warpper">
-                      <p class="card-subtitle">15 mins read</p>
+                      <p class="card-subtitle"><i class="fa fa-heart-o" style="font-size:15px"></i> {{ post.like_count }}</p>
 
-                      <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
+                      <time class="publish-date" datetime="2022-04-15">{{ post.time }}</time>
                     </div>
 
                   </div>
@@ -606,106 +440,8 @@
                 </div>
               </li>
 
-              <li>
-                <div class="popular-card">
-
-                  <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
-                    <img src="{% static 'images/popular-post-2.jpg' %}" width="64" height="64" loading="lazy"
-                      alt="Being unique is better than being perfect" class="img-cover">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <h4 class="headline headline-4 card-title">
-                      <a href="#" class="link hover-2">Being unique is better than being perfect</a>
-                    </h4>
-
-                    <div class="warpper">
-                      <p class="card-subtitle">15 mins read</p>
-
-                      <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
-                    </div>
-
-                  </div>
-
-                </div>
-              </li>
-
-              <li>
-                <div class="popular-card">
-
-                  <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
-                    <img src="{% static 'images/popular-post-3.jpg' %}" width="64" height="64" loading="lazy"
-                      alt="Every day, in every city and town across the country" class="img-cover">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <h4 class="headline headline-4 card-title">
-                      <a href="#" class="link hover-2">Every day, in every city and town across the country</a>
-                    </h4>
-
-                    <div class="warpper">
-                      <p class="card-subtitle">15 mins read</p>
-
-                      <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
-                    </div>
-
-                  </div>
-
-                </div>
-              </li>
-
-              <li>
-                <div class="popular-card">
-
-                  <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
-                    <img src="{% static 'images/popular-post-4.jpg' %}" width="64" height="64" loading="lazy"
-                      alt="Your voice, your mind, your story, your vision" class="img-cover">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <h4 class="headline headline-4 card-title">
-                      <a href="#" class="link hover-2">Your voice, your mind, your story, your vision</a>
-                    </h4>
-
-                    <div class="warpper">
-                      <p class="card-subtitle">15 mins read</p>
-
-                      <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
-                    </div>
-
-                  </div>
-
-                </div>
-              </li>
-
-              <li>
-                <div class="popular-card">
-
-                  <figure class="card-banner img-holder" style="--width: 64; --height: 64;">
-                    <img src="{% static 'images/popular-post-2.jpg' %}" width="64" height="64" loading="lazy"
-                      alt="Being unique is better than being perfect" class="img-cover">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <h4 class="headline headline-4 card-title">
-                      <a href="#" class="link hover-2">Being unique is better than being perfect</a>
-                    </h4>
-
-                    <div class="warpper">
-                      <p class="card-subtitle">15 mins read</p>
-
-                      <time class="publish-date" datetime="2022-04-15">15 April 2022</time>
-                    </div>
-
-                  </div>
-
-                </div>
-              </li>
-
+              {% endif %}
+              {% endfor %}
             </ul>
 
           </div>

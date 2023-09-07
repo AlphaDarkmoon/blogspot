@@ -1017,6 +1017,7 @@ body.nav-active { overflow: hidden; }
   .container-profile{
     width: 100%;
     padding: 20px;
+  
   }
 
 
@@ -1542,6 +1543,7 @@ body.nav-active { overflow: hidden; }
 {
   display: inline-block;
   max-width: 1000px;
+  min-width: 370px;
   text-align: left;
   padding: 10px;
   border-radius: 1px;

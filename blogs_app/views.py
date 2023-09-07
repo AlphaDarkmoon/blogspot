@@ -17,16 +17,37 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 #              HomeView to show all of the post titles on index.html    #
 #########################################################################
 
+import random  # Import the random module
+
+
+
+from django.db.models import Count  # Import Count to use in aggregation
+from .models import Post, Category
+
 class HomeView(ListView):
     model = Post
     template_name = 'index.html'
-    ordering = ['-id','post_time']
+    context_object_name = 'recent_posts'
+    ordering = ['-id', 'post_time']  # Order posts by post_time in descending order
 
-    def get_context_data(self,*args, **kwargs):
+    def get_context_data(self, *args, **kwargs):
         cat_values = Category.objects.all()
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context['cat_values'] = cat_values
+
+        # Get the 5 most-liked posts with their like counts
+        top_liked_posts = Post.objects.annotate(like_count=Count('likes')).order_by('-like_count')[:5]
+        context['top_liked_posts'] = top_liked_posts
+
+        # Get all posts and shuffle them
+        all_posts = list(Post.objects.all())
+        random.shuffle(all_posts)
+
+        # Select the first 5 shuffled items
+        context['random_posts'] = all_posts[:5]
+
         return context
+
 
 
 #########################################################################
