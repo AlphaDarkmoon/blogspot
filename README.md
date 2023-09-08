@@ -160,16 +160,13 @@ python manage.py runserver
 - [x]  Likes & Unlikes
 - [ ]  Comment & Discussion
 - [x]  Styling Add Blogs
-- [ ]  Related Posts
-- [ ]  Search Feature
+- [x]  Search Feature
 - [ ]  Slugify Links
 - [ ]  Social Sharing
-- [ ]  Email Subscribers
-- [ ]  Pagination
+- [x]  Email Subscribers
+- [x]  Pagination
 - [ ]  SEO optimization
-- [ ]  About Page
-- [ ]  Contact Page
-- [ ]  Privacy & Policy
+- [x]  About Page
 
 
 ## Tech Stack
