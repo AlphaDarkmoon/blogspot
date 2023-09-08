@@ -142,3 +142,9 @@ LOGOUT_REDIRECT_URL = "blogs_app:home"      #made changes
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# SEND NEWSLATTERs
+
+MAILCHIMP_API_KEY = 'd74936aec456e09e58d22df292e67f00-us21'
+MAILCHIMP_REGION = 'us21'
+MAILCHIMP_MARKETING_AUDIENCE_ID = '2a8303459a'

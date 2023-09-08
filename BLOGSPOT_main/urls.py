@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('blogs_app.urls')),
     path("users/", include("users.urls")),                      
     path("users/", include("django.contrib.auth.urls")),
+    path('marketing/', include('newslatter.urls')),
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
