@@ -23,8 +23,8 @@ def subscribe_view(request):
                     'email_address': form_email,
                     'status': 'subscribed',
                     'merge_fields': {
-                        'FNAME': 'Rex',
-                        'LNAME': 'Garidefu',
+                        'FNAME': 'Reader',
+                        
                     }
                 }
 
@@ -47,14 +47,14 @@ def subscribe_view(request):
 def subscribe_success_view(request):
     return render(request, 'message.html', {
         'title': 'Successfully subscribed',
-        'message': 'Yay, you have been successfully subscribed to our mailing list.',
+        'message': 'Yay, you have been successfully subscribed to BLOGSPOT newslatter',
     })
 
 
 def subscribe_fail_view(request):
     return render(request, 'message.html', {
         'title': 'Failed to subscribe',
-        'message': 'Oops, something went wrong.',
+        'message': 'Oops, something went wrong, Please try again.',
     })
 
 
@@ -88,7 +88,7 @@ def unsubscribe_view(request):
 def unsubscribe_success_view(request):
     return render(request, 'message.html', {
         'title': 'Successfully unsubscribed',
-        'message': 'You have been successfully unsubscribed from our mailing list.',
+        'message': 'You have been successfully unsubscribed from BLOGSPOT.',
     })
 
 

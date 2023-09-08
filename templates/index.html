@@ -33,11 +33,11 @@
 
           <div class="input-wrapper">
 
-            <input type="email" name="email_address" placeholder="Type your email address" required class="input-field"
+            <input type="email" name="email_address" placeholder="for Newslatters" required class="input-field"
               autocomplete="off">
 
             <button class="btn btn-primary">
-              <span class="span">Subscribe</span>
+              <a href="{% url "newslatter_app:subscribe" %}"  >Subscribe</a>
 
               <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
             </button>

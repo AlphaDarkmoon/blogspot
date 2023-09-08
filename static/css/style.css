@@ -1779,3 +1779,24 @@ body.nav-active { overflow: hidden; }
 }
 
 
+.subscribe-form{
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.subscribe-form > p > input{
+  width: 70% !important;
+  border: solid 1px #EB1254 !important;
+  background-color: hsla(216, 33%, 20%, 1)  ;
+
+}
+
+.subscribe-form > p > input::placeholder{
+  font-size: 16px;
+
+}
+
+#unsubscribe{
+  color: #ff3b76;
+  text-decoration: underline;
+}

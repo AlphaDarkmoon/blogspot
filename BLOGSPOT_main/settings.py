@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'blogs_app',
     'users',
     'ckeditor',
+    'newslatter',
 
     'django.contrib.admin',
     'django.contrib.auth',
