@@ -1,5 +1,5 @@
 from django.urls import path
-from blogs_app.views import HomeView,ArticleDetailView,AllBlogsView, AddCatagoryView,Addpostview,CategoryView,AdminView, DeletePostView, HomePostView, UpdatePostView, LikeView,UserEditView, ProfileEditView, ChangePasswordsView, AuthorProfile
+from blogs_app.views import HomeView,ArticleDetailView,AllBlogsView, AddCatagoryView,Addpostview,CategoryView,AdminView, DeletePostView, HomePostView, UpdatePostView, LikeView,UserEditView, ProfileEditView, ChangePasswordsView, AuthorProfile, about
 from django.contrib.auth import views as auth_views
 from . import views
 
@@ -21,5 +21,6 @@ urlpatterns = [
     path('password/',ChangePasswordsView.as_view(template_name = 'change_pass.html')),     
     path('userprofile',views.update_profile, name = 'user-profile'),  
     # path('author', views.AuthorProfile, name='author'), 
-    path ('author', AuthorProfile.as_view(), name='author'),                                                                                 
+    path ('author', AuthorProfile.as_view(), name='author'),   
+    path ('About',views.about, name='about'),                                                                                 
 ]

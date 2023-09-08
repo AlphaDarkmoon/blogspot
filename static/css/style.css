@@ -1628,13 +1628,13 @@ body.nav-active { overflow: hidden; }
 
 .bio-info{
   background-color: hsla(216, 33%, 20%, 1);;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
   margin-top: -50px;
   max-width: 1000px;
   margin-left: 10px;
   margin-right: 10px;
-  border: solid white 1px;
+  border: solid rgba(255, 255, 255, 0.37) 1px;
 }
 
 .insta{
@@ -1799,4 +1799,17 @@ body.nav-active { overflow: hidden; }
 #unsubscribe{
   color: #ff3b76;
   text-decoration: underline;
+}
+
+.about-content{
+  text-align: left;
+}
+
+.about-content p{
+  opacity: 0.9;
+}
+
+.about-content h1{
+  margin-bottom: -15px;
+  margin-top: 10px;
 }

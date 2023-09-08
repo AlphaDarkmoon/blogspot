@@ -251,3 +251,7 @@ def update_profile(request):
         form = ProfileUpdateForm(instance=profile)
     
     return render(request, 'user_profile.html', {'form': form})
+
+
+def about(request):
+    return render(request, 'aboutus.html')

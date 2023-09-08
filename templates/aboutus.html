@@ -1,0 +1,62 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+
+{% block title %}BLOGSPOT | PROFILE{% endblock %}
+
+
+{% block content %}
+
+<main>
+    <article>
+
+        <!-- 
+        - #HERO
+      -->
+
+        <section class="hero" id="home" aria-label="home">
+            <div class="blank2"></div>
+            <center>
+                <h2 id='name-auth'>About Us</h2>
+                <div class="profile-container-bio">
+                    <div class="profile-image">
+                        <img src="{% static 'images/aboutus.jpeg' %}" alt="" width="200px" height="auto"
+                            style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                    </div>
+                    <div class="bio-info">
+                        
+                        
+                        <br><br>
+                        <hr style="width:100%;margin-top:20px;margin-bottom: -5px;opacity: 0.2;">
+                        <br>
+                        <div class='about-content'>
+                            
+                           
+                        <p >
+                            
+                            <br>
+
+                            At Blogspot.com, our mission is to empower aspiring web developers, from beginners to mid-level enthusiasts, by offering a diverse range of courses and tutorials that foster skills and knowledge in programming and its related technologies.
+                            <br><br>
+                            <u>Founded in 2023</u>, our journey began with a commitment to deliver practical, high-quality educational content. We believe in staying at the forefront of the industry, utilizing the latest tools, technologies, and design patterns to provide our users with cutting-edge learning experiences.
+                            
+                            <br>
+                            <br>
+                            
+                            </a>  </p>
+                        </div>
+                        <hr style="width:50px;margin-top:20px;margin-bottom: -5px;">
+                    </div>
+                    
+                </div>
+
+            </center>
+
+        </section>
+
+    </article>
+    <div class="blank"></div>
+</main>
+
+{% endblock %}
