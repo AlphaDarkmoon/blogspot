@@ -69,4 +69,4 @@ class PasswordChangeForm(PasswordChangeForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name', 'profile_pic']
+        fields = ['name', 'profile_pic',]

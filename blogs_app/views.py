@@ -69,7 +69,7 @@ class HomeView(ListView):
 
 class ArticleDetailView(DetailView):
     model = Post
-    template_name='blogs.html'
+    template_name='extra/pages/blogs.html'
 
     def get_context_data(self,*args, **kwargs):
         cat_values = Category.objects.all()
@@ -169,7 +169,7 @@ class UserEditView(generic.UpdateView):  # Edit admin Profile
 
 class ProfileEditView(generic.UpdateView):  
     form_class = UpdateAdminProfileForm
-    template_name= 'user_profile.html'
+    template_name= 'extra/pages/user_profile.html'
     success_url = reverse_lazy('blogs_app:home')
 
     def get_object(self):
@@ -202,7 +202,7 @@ def AllBlogsView(request):
         page = request.GET.get('page')
         category_posts = paginator.get_page(page)
     
-    return render(request, 'all_blogs.html', {'category_posts': category_posts, 'search_query': search_query})
+    return render(request, 'extra/pages/all_blogs.html', {'category_posts': category_posts, 'search_query': search_query})
 
 
 def CategoryView(request, categories):
@@ -236,7 +236,7 @@ def LikeView(request,pk):
 
 class AuthorProfile(ListView):
     model = Post
-    template_name = 'authorProfile.html'
+    template_name = 'extra/pages/authorProfile.html'
     ordering = ['-id','post_time']
 
 
@@ -250,8 +250,8 @@ def update_profile(request):
     else:
         form = ProfileUpdateForm(instance=profile)
     
-    return render(request, 'user_profile.html', {'form': form})
+    return render(request, 'extra/pages/user_profile.html', {'form': form})
 
 
 def about(request):
-    return render(request, 'aboutus.html')
+    return render(request, 'extra/pages/aboutus.html')

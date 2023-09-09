@@ -11,7 +11,7 @@ class SignUp(generic.CreateView):
     # Redirect to the login page after successful registration
     success_url = reverse_lazy("login")
     # Use the 'signup.html' template for rendering the form
-    template_name = "register_new.html"
+    template_name = "extra/register_users/register_new.html"
 
 def logout_view(request):
     logout(request)

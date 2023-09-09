@@ -32,7 +32,7 @@
                       <!-- Display the current profile picture -->
                       
                       
-                        <img src="{% static 'images/auth-logo.png' %}" alt="" width="200px" height="auto"
+                        <img src="{{ user.profile.profile_pic.url }}" alt="" width="200px" height="auto"
                             style="border-radius:50%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
 
                   </center>
@@ -43,7 +43,12 @@
                   <!-- Render the 'bio' field as a textarea with 4 rows -->
                   
                 <br>
+                <div class="button-group">
                   <button type="submit" class='btn btn-primary'>Save</button>
+                  <br>
+                  <div class="blank" id="first"></div>
+                  <a href="{% url 'blogs_app:change-password' %}"  style="color:#EB1254;"> * Change Password</a>
+              </div>
               </form>
               
               </div>
