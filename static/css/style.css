@@ -1364,8 +1364,8 @@ body.nav-active { overflow: hidden; }
   text-decoration: underline;
 }
 
-.blog-objective > h2{
-  font-size: 40px;
+.blog-objective h2{
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 30px;
   margin-top: 30px;
@@ -1374,6 +1374,18 @@ body.nav-active { overflow: hidden; }
 
 .blog-objective > ol {
   margin-left: 15px;
+}
+
+.blog-banner img{
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin-bottom: -20px;
+}
+
+.blog-img{
+  width: 100%;
+  height: auto;
 }
 
 
@@ -1403,7 +1415,9 @@ body.nav-active { overflow: hidden; }
   background-color: #333; /* Color of the vertical line */
 }
 
-.codehilite {
+
+
+.blog-objective pre {
     background-color: #1a1919;
     color: white;
     border: 1px solid #ddd;
@@ -1415,7 +1429,7 @@ body.nav-active { overflow: hidden; }
     overflow: auto;
 }
 
-.codehilite code {
+.blog-objective pre code {
     white-space: pre;
     tab-size: 1;
 }

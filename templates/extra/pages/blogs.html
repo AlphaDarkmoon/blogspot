@@ -16,10 +16,10 @@
 </section>
 
 
-  <main>
-    <article>
+<main>
+  <article>
 
-      <!-- 
+    <!-- 
         - #HERO
       -->
 
@@ -30,199 +30,87 @@
 
 
 
-      <!-- 
+    <!-- 
         - #FEATURED POST
       -->
-      <!-- =====================BLOG--CONTENT=============== -->
-      <section class="section feature" aria-label="feature" id="featured">
-        <div class="container">
-          <div class="blog-banner">
-            <img src="assets/images/djngo-ban.avif" alt=""  class="image-blog">
-          </div>
-          <br>
-          <div class="like-title-container">
+    <!-- =====================BLOG--CONTENT=============== -->
+    <section class="section feature" aria-label="feature" id="featured">
+      <div class="container">
+        <div class="blog-banner">
+          <img src="{{ post.banner_img.url }}" width="500" height="1500" loading="lazy" alt=""
+          class="blog-img">
+        </div>
+        <br>
+        
+        <div class="like-title-container">
           <h2 class="headline headline-2 section-title">
-            <span class="span">{{ post.title }}</span> 
+            <div class="blog-objective">
+             <h2><span class="span">{{ post.title }}</span></h2>
+            </div>
           </h2>
           <div class="like-block">
             <form class='like-unlike' action="{% url 'blogs_app:like-post' post.pk %}" method="POST">
-    
+
               {% csrf_token %}
               {% if user.is_authenticated %}
-                {% if liked %}
-                <button class='like-btn' type="submit" name='post_id', value="{{ post.id}}", class="btn btn-denger" >Unlike</button>
-                {% else %}
-                <button class='like-btn' type="submit" name='post_id', value="{{ post.id}}", class="btn btn-primary" >Like</button>
-                {% endif %}
+              {% if liked %}
+              <button class='like-btn' type="submit" name='post_id' , value="{{ post.id}}" ,
+                class="btn btn-denger">Unlike</button>
+              {% else %}
+              <button class='like-btn' type="submit" name='post_id' , value="{{ post.id}}" ,
+                class="btn btn-primary">Like</button>
               {% endif %}
-              
-              <span class="total-likes">{{ total_likes}} Likes</span> 
-          
+              {% endif %}
+
+              <span class="total-likes">{{ total_likes}} Likes</span>
+
             </form>
           </div>
         </div>
         <br>
         <br>
-          <small>by: {{ post.author_name}}</small>
-          <p class="section-text">
-            {{post.category}} | Django | Web
-          </p>
-          <div class="blog-content">
-            <div class="blog-intro">
-    
-    <hr>
-    {{ post.body|safe }}
-    <hr>
-              <p>Django's automatically generated admin site is one of the biggest strengths of the framework. The
-                centralized admin interface lets you easily view and manipulate your models' data. This can save you a
-                lot of time while developing and managing content.
-              </p>
-              <br>
-              <p>
-                Even though the admin site is highly customizable, many developers aren't aware of its full
-                capabilities. This results in developers creating views and functions for things that could be easily
-                implemented with a bit of admin site tweaking.
-              </p>
-              <br>
-              <p>
-                In this article, we'll look at how to customize Django's admin site through practical examples. We'll
-                cover the built-in customization options as well as customization via third-party packages such as
-                DjangoQL, django-import-export, and django-admin-interface.</p>
-            </div>
-            <br>
-            <hr>
+        <small>by: {{ post.author_name}}</small>
+        <p class="section-text">
+          {{post.category}}
+        </p>
+        <div class="blog-content">
+          <div class="blog-intro">
+
             <div class="blog-objective">
-              <h2>Objectives</h2>
-              <p>By the end of this article, you'll be able to:</p>
-              <br>
-              <ol>
-                <li>Perform basic Django admin site configuration</li>
-                <li>Explain how Django model attributes affect the admin site</li>
-                <li>Use list_display to control which model fields are displayed</li>
-                <li>Add custom fields to <font color="#EB1254">list_display</font> and format existing ones</li>
-                <li>Add links to related model objects in <font color="#EB1254">list_display</font>
-                </li>
-                <li>Enable search and filters via <font color="#EB1254">search_fields</font> and <font color="#EB1254">
-                    list_display</font>
-                </li>
-                <li>Handle model inlines for both N:1 and M:M relationships</li>
-                <li>Use Django admin actions and create custom ones</li>
-                <li>Override Django admin forms and templates</li>
-                <li>Utilize DjangoQL for advanced searching functionality</li>
-                <li>Import data in and export data to different formats using django-import-export</li>
-                <li>Modify the appearance of your admin site via <font color="#EB1254">django-admin-interface</font>
-                </li>
-              </ol>
-              <br>
-              <hr>
-              <h2>Project Setup</h2>
-              <p>To demonstrate the different admin site customization options, I've prepared a simple web app. The web
-                app serves as an event ticket sales system. It allows you to manage venues, concerts, concert
-                categories, and tickets.</p>
-              <br>
-              <p>It has the following entity-relationship model:</p>
-              <br>
-              <center>
-                <img src="assets/images/relational.png' %}" alt="" class="image-blog">
-              </center>
-              <br>
-              <blockquote class="custom-blockquote">
-                I highly recommend you first follow along with this web app. After reading, you can then apply the
-                gained knowledge to your Django projects.
-              </blockquote>
-              <br>
-              <div class="codehilite">
-                <pre><code class="language-css">$ python3.11 -m venv env && source env/bin/activate</code></pre>
-              </div>
-              <br>
-              <p>Create a virtual environment and activate it:</p>
-              <br>
-              <div class="codehilite">
-                <pre><code class="language">$ python3.11 -m venv env && source env/bin/activate</code></pre>
-                <br>
-                <pre><code class="language">$ python3.11 -m venv env && source env/bin/activate</code></pre>
-              </div>
-
-              <br>
-              <p>Install the requirements and migrate the database:</p>
-              <br>
-              <div class="codehilite">
-                <pre><code class="language">(venv)$ pip install -r requirements.txt</code></pre>
-                <br>
-                <pre><code class="language">(venv)$ python manage.py migrate</code></pre>
-              </div>
-              <br>
-              <p>Open your favorite web browser and navigate to http://localhost:8000/admin. Try using your superuser
-                credentials to access the Django admin site. After that, ensure the database is populated with a few
-                venues, concert categories, concerts, and tickets.
-
-                Before continuing, I suggest you check the models in tickets/models.py. Pay attention to what fields a
-                model has and how the models are connected.</p>
-
-              <!-- =====================BLOG--CONTENT=============== -->
-              <br>
-              <h2>Conclusion</h2>
-              <p>In this article, we've covered many Django admin customization concepts. You should now be able to apply these concepts in practice and tailor the Django admin site to your project's needs.</p>
-              <p>I suggest you to also check out our other Django admin related articles:</p>
-              <br>
-              <ol>
-                <li><a href="#">Adding Charts to Django with Chart.js</a></li>
-                <li><a href="#">Supporting Multiple Languages in Django</a></li>
-                <li><a href="#">Creating a Custom User Model in Django</a></li>
-                </li>
-              </ol>
-              <br>
-              <p class="in-line">Grab the final source code from GitHub repo.</p>
-              <a href="#">django-admin-customization</a>
-              <br>
-              <div class="contributed-by">
-                <!-- <div class="container-contrib">
-                  <div class="content-contrib">
-                    <img src="assets/images/alpha_purple.png' %}" alt="Image" class="image-contrib">
-                    <p class="text-contrib"><ol>
-                      <li><a href="#">Adding Charts to Django with Chart.js</a></li>
-                      <li><a href="#">Supporting Multiple Languages in Django</a></li>
-                      <li><a href="#">Creating a Custom User Model in Django</a></li>
-                      </li>
-                    </ol></p>
-                    <div class="icons-contrib">
-                      <span class="icon"><i class="fa fa-github" style="font-size:50px"></i></span>
-                      <span class="icon"><i class="fa fa-github" style="font-size:50px"></i></span>
-                    </div>
-                  </div>
-                </div> -->
-                
-              </div>
+              {{ post.body|safe }}
             </div>
-            <a href="#" class="btn btn-secondary">
-              <span class="span">Show More Posts</span>
-
-              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-            </a>
-
+            
+            <img src="assets/images/relational.png' %}" alt="" class="image-blog">
           </div>
+          <a href="#" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
 
-          <img src="{% static 'images/shadow-3.svg' %}" width="500" height="1500" loading="lazy" alt="" class="feature-bg">
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
 
-      </section>
+        </div>
 
+        
 
-
-
-
-
-  
-
-
+    </section>
 
 
-      <!-- 
+
+
+
+
+
+
+
+
+
+    <!-- 
         - #RELATED POSTs
       -->
 
-    </article>
-  </main>
-  <div class="blank"></div>
+  </article>
+</main>
+<div class="blank"></div>
 
 
 {% endblock %}
