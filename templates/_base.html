@@ -86,7 +86,7 @@
 
 
                     <li>
-                        <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
+                        <a href="{% url 'homecomment' %}" class="navbar-link hover-1" data-nav-toggler>Comments</a>
                     </li>
                     {% if user.is_authenticated %}
                         {% if user.is_superuser %}
