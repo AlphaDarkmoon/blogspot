@@ -57,7 +57,7 @@ pip install pillow
 pip install mailchimp_marketing
 
 ```
-```
+
 4. Make migrations in Database:
 
 ```bash
