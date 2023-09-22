@@ -45,7 +45,19 @@ pip install Django
 pip install -U django-jazzmin
 
 ```
+3. Install Pillow
 
+```bash
+pip install pillow
+
+```
+3. Install Mailchimp marketing
+
+```bash
+pip install mailchimp_marketing
+
+```
+```
 4. Make migrations in Database:
 
 ```bash
@@ -158,7 +170,6 @@ python manage.py runserver
 - [x]  Category Blogs Page
 - [ ]  Admin Page
 - [x]  Likes & Unlikes
-- [ ]  Comment & Discussion
 - [x]  Styling Add Blogs
 - [x]  Search Feature
 - [ ]  Slugify Links
@@ -177,7 +188,7 @@ python manage.py runserver
 
 **Framework:** Django
 
-**Aditional:** Jazzmin, Custome Dashboard
+**Aditional:** Jazzmin, Custome Dashboard, Ckeditor, Mailchimp marketing, Pillow
 
 
 ## License
@@ -191,9 +202,8 @@ If you have any feedback, please reach out to us at darkmode.alpha@gmail.com
 
 
 
+## Open for every and all types of Contributions.
 
-## Notice
-
-The deadline of this project is on 18 September 2023
+Contributors names will be mentioned on README.md as well as on the website [ BLOGSPOT ].
 
 
